@@ -9,6 +9,13 @@ using Dapper;
 
 namespace ImageProcessorService
 {
+    /*
+CREATE TABLE tblProcessedImageIDs (
+    ImageID INT PRIMARY KEY
+);
+    */
+
+
     public class Program
     {
         static async Task<int> Main()
@@ -17,7 +24,7 @@ namespace ImageProcessorService
             string dbConnectionString = "Data Source=lsr.database.windows.net;Initial Catalog=LSR;Persist Security Info=True;Integrated Security=false;User ID=gateway@lsr;Password=Aiwfcim2ft;MultipleActiveResultSets=True";
             int chunkSize = 1000; // Number of IDs per batch
 
-            string tableName = "tblLSR855_ProcessedImageIDs";
+            string tableName = "tblLSR855_Invalid";
 
             try
             {
