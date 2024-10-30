@@ -6,8 +6,6 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Linq;
 using Dapper;
-using CsvHelper;
-using System.Globalization;
 
 namespace ImageProcessorService
 {
@@ -17,36 +15,29 @@ namespace ImageProcessorService
         {
             string filePath = @"C:\Development\Utils\ImagesIDsToCSV\ImageIDs.txt"; // Hardcoded input file path
             string dbConnectionString = "Data Source=lsr.database.windows.net;Initial Catalog=LSR;Persist Security Info=True;Integrated Security=false;User ID=gateway@lsr;Password=Aiwfcim2ft;MultipleActiveResultSets=True";
-            string outputCsvPath = @"C:\Development\Utils\ImagesIDsToCSV\output.csv"; // Hardcoded output CSV file path
             int chunkSize = 1000; // Number of IDs per batch
 
             try
             {
                 using (IDbConnection db = new SqlConnection(dbConnectionString))
-                using (var writer = new StreamWriter(outputCsvPath))
-                using (var csv = new CsvWriter(writer, CultureInfo.InvariantCulture))
                 {
-                    csv.WriteHeader<ImageRecord>();
-                    csv.NextRecord();
-
                     await foreach (var imageIdChunk in ReadImageIdsInChunksAsync(filePath, chunkSize))
                     {
                         if (imageIdChunk.Any())
                         {
-                            var sql = $@"
-                                SELECT imageid, companyid, Deleted, Done, Sharelevel
-                                FROM tblImages
-                                WHERE Deleted <> 1 and sharelevel < 4 and imageid IN @ImageIds
+                            var sql = @"
+                                INSERT INTO tblLSR855_ProcessedImageIDs (ImageID)
+                                SELECT ImageID FROM tblImages WHERE ImageID IN @ImageIds
                             ";
 
-                            var imageRecords = (await db.QueryAsync<ImageRecord>(sql, new { ImageIds = imageIdChunk })).ToList();
+                            int rowsInserted = await db.ExecuteAsync(sql, new { ImageIds = imageIdChunk });
 
-                            csv.WriteRecords(imageRecords);
+                            Console.WriteLine($"{rowsInserted} records inserted for current batch.");
                         }
                     }
                 }
 
-                Console.WriteLine($"Data successfully written to {outputCsvPath}");
+                Console.WriteLine("Data successfully inserted into tblLSR855_ProcessedImageIDs.");
                 return 0;
             }
             catch (Exception ex)
@@ -85,14 +76,5 @@ namespace ImageProcessorService
                 }
             }
         }
-    }
-
-    public class ImageRecord
-    {
-        public int ImageId { get; set; }
-        public int CompanyId { get; set; }
-        //public bool Deleted { get; set; }
-        //public bool Done { get; set; }
-        public int ShareLevel { get; set; }
     }
 }
