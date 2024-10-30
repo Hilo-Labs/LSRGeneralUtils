@@ -17,6 +17,8 @@ namespace ImageProcessorService
             string dbConnectionString = "Data Source=lsr.database.windows.net;Initial Catalog=LSR;Persist Security Info=True;Integrated Security=false;User ID=gateway@lsr;Password=Aiwfcim2ft;MultipleActiveResultSets=True";
             int chunkSize = 1000; // Number of IDs per batch
 
+            string tableName = "tblLSR855_ProcessedImageIDs";
+
             try
             {
                 using (IDbConnection db = new SqlConnection(dbConnectionString))
@@ -25,8 +27,8 @@ namespace ImageProcessorService
                     {
                         if (imageIdChunk.Any())
                         {
-                            var sql = @"
-                                INSERT INTO tblLSR855_ProcessedImageIDs (ImageID)
+                            var sql = $@"
+                                INSERT INTO {tableName} (ImageID)
                                 SELECT ImageID FROM tblImages WHERE ImageID IN @ImageIds
                             ";
 
@@ -37,7 +39,7 @@ namespace ImageProcessorService
                     }
                 }
 
-                Console.WriteLine("Data successfully inserted into tblLSR855_ProcessedImageIDs.");
+                Console.WriteLine($"Data successfully inserted into {tableName}.");
                 return 0;
             }
             catch (Exception ex)
