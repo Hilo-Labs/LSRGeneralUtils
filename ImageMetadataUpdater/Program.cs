@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Data.SqlClient;
 using System.Data;
+using System.IO;
 using Dapper;
 using Azure.Storage.Blobs;
 using Azure.Storage.Blobs.Models;
 using ImageMagick;
-using System.IO;
 using System.Threading.Tasks;
 using System.Linq;
 using Azure;
@@ -19,36 +19,42 @@ namespace ImageProcessorService
         const string imageBlobName = "images-v3";
         const double Threshold = 0.15; // 15%
         const int HighResolutionMaxSize = 10000;
+        const string logFilePath = @"C:\Development\Utils\ImageMetadataUpdater\log.txt";
+
+        static StreamWriter logWriter;
 
         static async Task<int> Main(string[] args)
         {
-            try
+            using (logWriter = new StreamWriter(logFilePath, append: true) { AutoFlush = true })
             {
-                Console.WriteLine("Initializing settings...");
-                Console.WriteLine("Starting image metadata update process...");
-                await UpdateImageMetadataAsync(dbConnectionString, storageAccountConnectionString);
-                Console.WriteLine("Image metadata update process complete.");
-                return 0;
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("An error occurred during processing:");
-                Console.WriteLine(ex.Message);
-                return 1;
+                try
+                {
+                    Log("Initializing settings...");
+                    Log("Starting image metadata update process...");
+                    await UpdateImageMetadataAsync(dbConnectionString, storageAccountConnectionString);
+                    Log("Image metadata update process complete.");
+                    return 0;
+                }
+                catch (Exception ex)
+                {
+                    Log("An error occurred during processing:");
+                    Log(ex.Message);
+                    return 1;
+                }
             }
         }
 
         static async Task UpdateImageMetadataAsync(string dbConnectionString, string storageAccountConnectionString)
         {
-            Console.WriteLine("Initializing Blob Service Client...");
+            Log("Initializing Blob Service Client...");
             BlobServiceClient blobServiceClient = new BlobServiceClient(storageAccountConnectionString);
             BlobContainerClient blobContainerClient = blobServiceClient.GetBlobContainerClient(imageBlobName);
 
             using (IDbConnection db = new SqlConnection(dbConnectionString))
             {
-                while (true)
+                while (!(Console.KeyAvailable && Console.ReadKey().Key == ConsoleKey.Escape))
                 {
-                    Console.WriteLine("Attempting to fetch an image for processing...");
+                    Log("Attempting to fetch an image for processing...");
                     var updatingImageId = (await db.QueryAsync<int>(
                         @"UPDATE TOP(1) tblMetaUpdated
                           SET Status = -1
@@ -58,13 +64,13 @@ namespace ImageProcessorService
 
                     if (updatingImageId <= 0)
                     {
-                        Console.WriteLine("No images to process. Exiting...");
+                        Log("No images to process. Exiting...");
                         break;
                     }
 
                     try
                     {
-                        Console.WriteLine($"Processing ImageID: {updatingImageId}");
+                        Log($"Processing ImageID: {updatingImageId}");
                         BlobClient blobClientFull = blobContainerClient.GetBlobClient($"{updatingImageId}/full.tif");
                         BlobClient blobClientMedium = blobContainerClient.GetBlobClient($"{updatingImageId}/medium.gif");
 
@@ -78,51 +84,42 @@ namespace ImageProcessorService
                             throw new FileNotFoundException($"Blob {updatingImageId}/medium.gif does not exist.");
                         }
 
-                        Console.WriteLine("Opening blob stream for full.tif...");
+                        Log("Opening blob stream for full.tif...");
                         var blobOpenReadOptions = new BlobOpenReadOptions(allowModifications: false);
 
                         uint widthFull, heightFull;
+                        MagickImage fullImage = null;
                         using (var blobStreamFull = await blobClientFull.OpenReadAsync(blobOpenReadOptions))
                         {
                             try
                             {
-                                using (var magickImage = new MagickImage())
-                                {
-                                    magickImage.Ping(blobStreamFull);
-                                    widthFull = magickImage.Width;
-                                    heightFull = magickImage.Height;
-                                    Console.WriteLine($"Full image dimensions: Width = {widthFull}, Height = {heightFull}");
-                                }
+                                fullImage = new MagickImage();
+                                fullImage.Ping(blobStreamFull);
+                                widthFull = fullImage.Width;
+                                heightFull = fullImage.Height;
+                                Log($"Full image dimensions: Width = {widthFull}, Height = {heightFull}");
                             }
                             catch (Exception pingEx)
                             {
-                                Console.WriteLine($"Ping failed for ImageID {updatingImageId} full.tif: {pingEx.Message}");
-                                Console.WriteLine("Downloading the entire full.tif to read dimensions...");
-                                using (var fullImageStream = new MemoryStream())
-                                {
-                                    await blobClientFull.DownloadToAsync(fullImageStream);
-                                    fullImageStream.Position = 0;
-                                    using (var magickImage = new MagickImage(fullImageStream))
-                                    {
-                                        widthFull = magickImage.Width;
-                                        heightFull = magickImage.Height;
-                                        Console.WriteLine($"Full image dimensions (after full download): Width = {widthFull}, Height = {heightFull}");
-                                    }
-                                }
+                                Log($"Ping failed for ImageID {updatingImageId} full.tif: {pingEx.Message}");
+                                Log("Downloading the entire full.tif to read dimensions...");
+                                fullImage = new MagickImage(blobStreamFull);
+                                widthFull = fullImage.Width;
+                                heightFull = fullImage.Height;
+                                Log($"Full image dimensions (after full download): Width = {widthFull}, Height = {heightFull}");
                             }
                         }
 
-                        Console.WriteLine("Opening blob stream for medium.gif...");
+                        Log("Opening blob stream for medium.gif...");
                         uint widthMedium, heightMedium;
+                        MagickImage mediumImage = null;
                         using (var blobStreamMedium = await blobClientMedium.OpenReadAsync(new BlobOpenReadOptions(allowModifications: false)))
                         {
-                            using (var magickImageMedium = new MagickImage())
-                            {
-                                magickImageMedium.Ping(blobStreamMedium);
-                                widthMedium = magickImageMedium.Width;
-                                heightMedium = magickImageMedium.Height;
-                                Console.WriteLine($"Medium image dimensions: Width = {widthMedium}, Height = {heightMedium}");
-                            }
+                            mediumImage = new MagickImage();
+                            mediumImage.Ping(blobStreamMedium);
+                            widthMedium = mediumImage.Width;
+                            heightMedium = mediumImage.Height;
+                            Log($"Medium image dimensions: Width = {widthMedium}, Height = {heightMedium}");
                         }
 
                         double aspectFull = (double)widthFull / heightFull;
@@ -133,28 +130,65 @@ namespace ImageProcessorService
                         double aspectDifferenceRotated = Math.Abs(aspectFullRotated - aspectMedium) / aspectMedium;
 
                         int changed;
+                        int rotationAngle = 0;
 
                         if (aspectDifferenceOriginal <= Threshold)
                         {
                             changed = 0;
-                            Console.WriteLine("Aspect ratios match within threshold. Changed = 0");
+                            Log("Aspect ratios match within threshold. Changed = 0");
                         }
                         else if (aspectDifferenceRotated <= Threshold)
                         {
                             changed = 1;
-                            Console.WriteLine("Aspect ratios match after rotation within threshold. Changed = 1");
+                            Log("Aspect ratios match after rotation within threshold. Changed = 1");
+
+                            Log("Determining rotation direction using image comparison...");
+                            uint compareSize = 256;
+
+                            IMagickImage<byte> fullResized = fullImage.Clone();
+                            fullResized.Resize(compareSize, compareSize);
+
+                            IMagickImage<byte> mediumResized = mediumImage.Clone();
+                            mediumResized.Resize(compareSize, compareSize);
+
+                            double diffNoRotation = fullResized.Compare(mediumResized, ErrorMetric.RootMeanSquared);
+                            Log($"Difference without rotation: {diffNoRotation}");
+
+                            fullResized.Rotate(90);
+                            double diffRotateCW = fullResized.Compare(mediumResized, ErrorMetric.RootMeanSquared);
+                            Log($"Difference after 90 degrees CW rotation: {diffRotateCW}");
+
+                            fullResized.Rotate(-180);
+                            double diffRotateCCW = fullResized.Compare(mediumResized, ErrorMetric.RootMeanSquared);
+                            Log($"Difference after 90 degrees CCW rotation: {diffRotateCCW}");
+
+                            double minDiff = Math.Min(Math.Min(diffNoRotation, diffRotateCW), diffRotateCCW);
+                            if (minDiff == diffRotateCW)
+                            {
+                                rotationAngle = 90;
+                                Log("Rotation direction determined: 90 degrees clockwise.");
+                            }
+                            else if (minDiff == diffRotateCCW)
+                            {
+                                rotationAngle = -90;
+                                Log("Rotation direction determined: 90 degrees counter-clockwise.");
+                            }
+                            else
+                            {
+                                Log("No significant difference found with rotation.");
+                            }
                         }
                         else
                         {
                             if (aspectDifferenceOriginal < aspectDifferenceRotated)
                             {
                                 changed = 2;
-                                Console.WriteLine("Aspect ratio closer to original orientation. Changed = 2");
+                                Log("Aspect ratio closer to original orientation. Changed = 2");
                             }
                             else
                             {
                                 changed = 3;
-                                Console.WriteLine("Aspect ratio closer to rotated orientation. Changed = 3");
+                                Log("Aspect ratio closer to rotated orientation. Changed = 3");
                             }
                         }
 
@@ -166,26 +200,40 @@ namespace ImageProcessorService
 
                         await blobClientFull.SetMetadataAsync(metadata);
 
-                        Console.WriteLine($"Metadata updated for blob {updatingImageId}/full.tif");
+                        Log($"Metadata updated for blob {updatingImageId}/full.tif");
 
                         int statusToUpdate = 2;
 
-                        if (changed != 0)
+                        if (changed == 1)
                         {
-                            Console.WriteLine("Changed is not zero, generating high.gif...");
+                            Log("Changed is 1, generating high.gif from full.tif with rotation...");
                             using (var blobStreamFull = await blobClientFull.OpenReadAsync(new BlobOpenReadOptions(allowModifications: false)))
                             {
                                 using (var originalImage = new MagickImage(blobStreamFull))
                                 {
-                                    var highGifMemoryStream = ConvertToGifWithMaxSize(originalImage, HighResolutionMaxSize);
+                                    var highGifMemoryStream = ConvertToGifWithMaxSize(originalImage, HighResolutionMaxSize, rotationAngle);
                                     highGifMemoryStream.Position = 0;
-                                    Console.WriteLine("Conversion to high.gif complete.");
+                                    Log("Conversion to high.gif complete.");
+
                                     var highGifBlobClient = blobContainerClient.GetBlobClient($"{updatingImageId}/high.gif");
                                     await highGifBlobClient.UploadAsync(highGifMemoryStream, overwrite: true);
-                                    Console.WriteLine($"Regenerated high.gif from full.tif and uploaded for ImageID {updatingImageId}");
+                                    Log($"Regenerated high.gif from full.tif and uploaded for ImageID {updatingImageId}");
                                 }
                             }
                             statusToUpdate = 4;
+                        }
+                        else if (changed == 2 || changed == 3)
+                        {
+                            Log($"Changed is {changed}, copying medium.gif to high.gif...");
+                            var highGifBlobClient = blobContainerClient.GetBlobClient($"{updatingImageId}/high.gif");
+                            var mediumGifBlobClient = blobContainerClient.GetBlobClient($"{updatingImageId}/medium.gif");
+                            await highGifBlobClient.StartCopyFromUriAsync(mediumGifBlobClient.Uri);
+                            Log($"Copied medium.gif to high.gif for ImageID {updatingImageId}");
+                            statusToUpdate = 6;
+                        }
+                        else
+                        {
+                            Log("Changed is 0, no action needed.");
                         }
 
                         await db.ExecuteAsync(
@@ -201,11 +249,11 @@ namespace ImageProcessorService
                                 Status = statusToUpdate
                             }
                         );
-                        Console.WriteLine($"Database status updated to '{statusToUpdate}' with width, height, gif dimensions, and changed.");
+                        Log($"Database status updated to '{statusToUpdate}' with width, height, gif dimensions, and changed.");
                     }
                     catch (Exception ex)
                     {
-                        Console.WriteLine($"Error processing ImageID {updatingImageId}: {ex.Message}");
+                        Log($"Error processing ImageID {updatingImageId}: {ex.Message}");
                         await db.ExecuteAsync(
                             @"UPDATE tblMetaUpdated SET Status = -40, Reason = @Reason WHERE ImageID = @ImageID",
                             new
@@ -214,13 +262,14 @@ namespace ImageProcessorService
                                 Reason = ex.Message
                             }
                         );
-                        Console.WriteLine("Database status updated to '-40' (failure).");
+                        Log("Database status updated to '-40' (failure).");
                     }
+                    Log("=============================================");
                 }
             }
         }
 
-        public static MemoryStream ConvertToGifWithMaxSize(IMagickImage image, int maxSize)
+        public static MemoryStream ConvertToGifWithMaxSize(IMagickImage image, int maxSize, int rotationAngle)
         {
             var originalWidth = image.Width;
             var originalHeight = image.Height;
@@ -239,6 +288,12 @@ namespace ImageProcessorService
                 image.Resize(resizeSettings);
             }
 
+            if (rotationAngle != 0)
+            {
+                image.Rotate(rotationAngle);
+                Log($"Applied rotation of {rotationAngle} degrees.");
+            }
+
             image.Quantize(new QuantizeSettings
             {
                 Colors = 128,
@@ -253,6 +308,13 @@ namespace ImageProcessorService
             memoryStream.Position = 0;
 
             return memoryStream;
+        }
+
+        public static void Log(string message)
+        {
+            var logMessage = $"{DateTime.Now:yyyy-MM-dd HH:mm:ss} - {message}";
+            Console.WriteLine(logMessage);
+            logWriter.WriteLine(logMessage);
         }
     }
 }

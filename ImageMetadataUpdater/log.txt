@@ -1,0 +1,802 @@
+2024-11-05 13:48:43 - Initializing settings...
+2024-11-05 13:48:43 - Starting image metadata update process...
+2024-11-05 13:48:44 - Initializing Blob Service Client...
+2024-11-05 13:48:44 - Attempting to fetch an image for processing...
+2024-11-05 13:48:45 - Processing ImageID: 3183156
+2024-11-05 13:48:45 - Opening blob stream for full.tif...
+2024-11-05 13:48:46 - Full image dimensions: Width = 7200, Height = 14324
+2024-11-05 13:48:46 - Opening blob stream for medium.gif...
+2024-11-05 13:48:46 - Medium image dimensions: Width = 1080, Height = 2148
+2024-11-05 13:48:46 - Aspect ratios match within threshold. Changed = 0
+2024-11-05 13:48:46 - Metadata updated for blob 3183156/full.tif
+2024-11-05 13:48:46 - Changed is 0, no action needed.
+2024-11-05 13:48:47 - Database status updated to '2' with width, height, gif dimensions, and changed.
+2024-11-05 13:48:47 - =============================================
+2024-11-05 13:48:47 - Attempting to fetch an image for processing...
+2024-11-05 13:48:47 - Processing ImageID: 3183159
+2024-11-05 13:48:47 - Opening blob stream for full.tif...
+2024-11-05 13:48:48 - Full image dimensions: Width = 7200, Height = 10757
+2024-11-05 13:48:48 - Opening blob stream for medium.gif...
+2024-11-05 13:48:48 - Medium image dimensions: Width = 1080, Height = 1613
+2024-11-05 13:48:48 - Aspect ratios match within threshold. Changed = 0
+2024-11-05 13:48:48 - Metadata updated for blob 3183159/full.tif
+2024-11-05 13:48:48 - Changed is 0, no action needed.
+2024-11-05 13:48:50 - Database status updated to '2' with width, height, gif dimensions, and changed.
+2024-11-05 13:48:50 - =============================================
+2024-11-05 13:48:50 - Attempting to fetch an image for processing...
+2024-11-05 13:48:50 - Processing ImageID: 3183160
+2024-11-05 13:48:50 - Opening blob stream for full.tif...
+2024-11-05 13:48:51 - Full image dimensions: Width = 7200, Height = 5402
+2024-11-05 13:48:51 - Opening blob stream for medium.gif...
+2024-11-05 13:48:51 - Medium image dimensions: Width = 1200, Height = 900
+2024-11-05 13:48:51 - Aspect ratios match within threshold. Changed = 0
+2024-11-05 13:48:51 - Metadata updated for blob 3183160/full.tif
+2024-11-05 13:48:51 - Changed is 0, no action needed.
+2024-11-05 13:48:53 - Database status updated to '2' with width, height, gif dimensions, and changed.
+2024-11-05 13:48:53 - =============================================
+2024-11-05 13:48:53 - Attempting to fetch an image for processing...
+2024-11-05 13:48:53 - Processing ImageID: 3183161
+2024-11-05 13:48:53 - Opening blob stream for full.tif...
+2024-11-05 13:48:54 - Full image dimensions: Width = 2700, Height = 4190
+2024-11-05 13:48:54 - Opening blob stream for medium.gif...
+2024-11-05 13:48:54 - Medium image dimensions: Width = 810, Height = 1257
+2024-11-05 13:48:54 - Aspect ratios match within threshold. Changed = 0
+2024-11-05 13:48:54 - Metadata updated for blob 3183161/full.tif
+2024-11-05 13:48:54 - Changed is 0, no action needed.
+2024-11-05 13:48:55 - Database status updated to '2' with width, height, gif dimensions, and changed.
+2024-11-05 13:48:55 - =============================================
+2024-11-05 13:48:55 - Attempting to fetch an image for processing...
+2024-11-05 13:48:55 - Processing ImageID: 3183162
+2024-11-05 13:48:55 - Opening blob stream for full.tif...
+2024-11-05 13:48:55 - Full image dimensions: Width = 10800, Height = 7139
+2024-11-05 13:48:55 - Opening blob stream for medium.gif...
+2024-11-05 13:48:55 - Medium image dimensions: Width = 1620, Height = 1070
+2024-11-05 13:48:55 - Aspect ratios match within threshold. Changed = 0
+2024-11-05 13:48:55 - Metadata updated for blob 3183162/full.tif
+2024-11-05 13:48:55 - Changed is 0, no action needed.
+2024-11-05 13:48:57 - Database status updated to '2' with width, height, gif dimensions, and changed.
+2024-11-05 13:48:57 - =============================================
+2024-11-05 13:48:57 - Attempting to fetch an image for processing...
+2024-11-05 13:48:57 - Processing ImageID: 3183163
+2024-11-05 13:48:57 - Opening blob stream for full.tif...
+2024-11-05 13:48:58 - Full image dimensions: Width = 10800, Height = 4475
+2024-11-05 13:48:58 - Opening blob stream for medium.gif...
+2024-11-05 13:48:58 - Medium image dimensions: Width = 1620, Height = 671
+2024-11-05 13:48:58 - Aspect ratios match within threshold. Changed = 0
+2024-11-05 13:48:58 - Metadata updated for blob 3183163/full.tif
+2024-11-05 13:48:58 - Changed is 0, no action needed.
+2024-11-05 13:48:59 - Database status updated to '2' with width, height, gif dimensions, and changed.
+2024-11-05 13:48:59 - =============================================
+2024-11-05 13:48:59 - Attempting to fetch an image for processing...
+2024-11-05 13:48:59 - Processing ImageID: 3183164
+2024-11-05 13:48:59 - Opening blob stream for full.tif...
+2024-11-05 13:48:59 - Full image dimensions: Width = 7200, Height = 10754
+2024-11-05 13:48:59 - Opening blob stream for medium.gif...
+2024-11-05 13:48:59 - Medium image dimensions: Width = 1080, Height = 1613
+2024-11-05 13:48:59 - Aspect ratios match within threshold. Changed = 0
+2024-11-05 13:48:59 - Metadata updated for blob 3183164/full.tif
+2024-11-05 13:48:59 - Changed is 0, no action needed.
+2024-11-05 13:49:03 - Database status updated to '2' with width, height, gif dimensions, and changed.
+2024-11-05 13:49:03 - =============================================
+2024-11-05 13:52:15 - Initializing settings...
+2024-11-05 13:52:15 - Starting image metadata update process...
+2024-11-05 13:52:16 - Initializing Blob Service Client...
+2024-11-05 13:52:19 - Attempting to fetch an image for processing...
+2024-11-05 13:52:20 - Processing ImageID: 3183165
+2024-11-05 13:52:20 - Opening blob stream for full.tif...
+2024-11-05 13:52:21 - Full image dimensions: Width = 7200, Height = 5381
+2024-11-05 13:52:21 - Opening blob stream for medium.gif...
+2024-11-05 13:52:21 - Medium image dimensions: Width = 1200, Height = 896
+2024-11-05 13:52:21 - Aspect ratios match within threshold. Changed = 0
+2024-11-05 13:52:21 - Metadata updated for blob 3183165/full.tif
+2024-11-05 13:52:21 - Changed is 0, no action needed.
+2024-11-05 13:52:23 - Database status updated to '2' with width, height, gif dimensions, and changed.
+2024-11-05 13:52:23 - =============================================
+2024-11-05 13:52:23 - Attempting to fetch an image for processing...
+2024-11-05 13:52:23 - Processing ImageID: 3183174
+2024-11-05 13:52:23 - Opening blob stream for full.tif...
+2024-11-05 13:52:23 - Full image dimensions: Width = 10800, Height = 7193
+2024-11-05 13:52:23 - Opening blob stream for medium.gif...
+2024-11-05 13:52:23 - Medium image dimensions: Width = 1620, Height = 1078
+2024-11-05 13:52:23 - Aspect ratios match within threshold. Changed = 0
+2024-11-05 13:52:23 - Metadata updated for blob 3183174/full.tif
+2024-11-05 13:52:23 - Changed is 0, no action needed.
+2024-11-05 13:52:26 - Database status updated to '2' with width, height, gif dimensions, and changed.
+2024-11-05 13:52:26 - =============================================
+2024-11-05 13:52:26 - Image metadata update process complete.
+2024-11-05 13:53:21 - Initializing settings...
+2024-11-05 13:53:21 - Starting image metadata update process...
+2024-11-05 13:53:21 - Initializing Blob Service Client...
+2024-11-05 13:53:21 - Attempting to fetch an image for processing...
+2024-11-05 13:53:22 - Processing ImageID: 3183791
+2024-11-05 13:53:23 - Opening blob stream for full.tif...
+2024-11-05 13:53:23 - Full image dimensions: Width = 3600, Height = 5081
+2024-11-05 13:53:23 - Opening blob stream for medium.gif...
+2024-11-05 13:53:23 - Medium image dimensions: Width = 850, Height = 1200
+2024-11-05 13:53:23 - Aspect ratios match within threshold. Changed = 0
+2024-11-05 13:53:23 - Metadata updated for blob 3183791/full.tif
+2024-11-05 13:53:23 - Changed is 0, no action needed.
+2024-11-05 13:53:24 - Database status updated to '2' with width, height, gif dimensions, and changed.
+2024-11-05 13:53:24 - =============================================
+2024-11-05 13:53:24 - Attempting to fetch an image for processing...
+2024-11-05 13:53:24 - Processing ImageID: 3183796
+2024-11-05 13:53:24 - Opening blob stream for full.tif...
+2024-11-05 13:53:24 - Full image dimensions: Width = 10800, Height = 7205
+2024-11-05 13:53:24 - Opening blob stream for medium.gif...
+2024-11-05 13:53:25 - Medium image dimensions: Width = 1620, Height = 1080
+2024-11-05 13:53:25 - Aspect ratios match within threshold. Changed = 0
+2024-11-05 13:53:25 - Metadata updated for blob 3183796/full.tif
+2024-11-05 13:53:25 - Changed is 0, no action needed.
+2024-11-05 13:53:25 - Database status updated to '2' with width, height, gif dimensions, and changed.
+2024-11-05 13:53:25 - =============================================
+2024-11-05 13:53:25 - Attempting to fetch an image for processing...
+2024-11-05 13:53:25 - Processing ImageID: 3184395
+2024-11-05 13:53:25 - Opening blob stream for full.tif...
+2024-11-05 13:53:26 - Full image dimensions: Width = 7200, Height = 5396
+2024-11-05 13:53:26 - Opening blob stream for medium.gif...
+2024-11-05 13:53:26 - Medium image dimensions: Width = 1200, Height = 899
+2024-11-05 13:53:26 - Aspect ratios match within threshold. Changed = 0
+2024-11-05 13:53:26 - Metadata updated for blob 3184395/full.tif
+2024-11-05 13:53:26 - Changed is 0, no action needed.
+2024-11-05 13:53:26 - Database status updated to '2' with width, height, gif dimensions, and changed.
+2024-11-05 13:53:26 - =============================================
+2024-11-05 13:53:26 - Attempting to fetch an image for processing...
+2024-11-05 13:53:26 - Processing ImageID: 3184896
+2024-11-05 13:53:27 - Opening blob stream for full.tif...
+2024-11-05 13:53:27 - Full image dimensions: Width = 7200, Height = 5411
+2024-11-05 13:53:27 - Opening blob stream for medium.gif...
+2024-11-05 13:53:27 - Medium image dimensions: Width = 1200, Height = 901
+2024-11-05 13:53:27 - Aspect ratios match within threshold. Changed = 0
+2024-11-05 13:53:27 - Metadata updated for blob 3184896/full.tif
+2024-11-05 13:53:27 - Changed is 0, no action needed.
+2024-11-05 13:53:28 - Database status updated to '2' with width, height, gif dimensions, and changed.
+2024-11-05 13:53:28 - =============================================
+2024-11-05 13:53:28 - Attempting to fetch an image for processing...
+2024-11-05 13:53:28 - Processing ImageID: 3184897
+2024-11-05 13:53:28 - Opening blob stream for full.tif...
+2024-11-05 13:53:28 - Full image dimensions: Width = 10800, Height = 10769
+2024-11-05 13:53:28 - Opening blob stream for medium.gif...
+2024-11-05 13:53:28 - Medium image dimensions: Width = 1620, Height = 1615
+2024-11-05 13:53:28 - Aspect ratios match within threshold. Changed = 0
+2024-11-05 13:53:28 - Metadata updated for blob 3184897/full.tif
+2024-11-05 13:53:28 - Changed is 0, no action needed.
+2024-11-05 13:53:29 - Database status updated to '2' with width, height, gif dimensions, and changed.
+2024-11-05 13:53:29 - =============================================
+2024-11-05 13:53:29 - Attempting to fetch an image for processing...
+2024-11-05 13:53:29 - Processing ImageID: 3184899
+2024-11-05 13:53:29 - Opening blob stream for full.tif...
+2024-11-05 13:53:29 - Full image dimensions: Width = 7200, Height = 5399
+2024-11-05 13:53:29 - Opening blob stream for medium.gif...
+2024-11-05 13:53:29 - Medium image dimensions: Width = 1200, Height = 899
+2024-11-05 13:53:29 - Aspect ratios match within threshold. Changed = 0
+2024-11-05 13:53:29 - Metadata updated for blob 3184899/full.tif
+2024-11-05 13:53:29 - Changed is 0, no action needed.
+2024-11-05 13:53:30 - Database status updated to '2' with width, height, gif dimensions, and changed.
+2024-11-05 13:53:30 - =============================================
+2024-11-05 13:53:30 - Attempting to fetch an image for processing...
+2024-11-05 13:53:31 - Processing ImageID: 3184900
+2024-11-05 13:53:31 - Opening blob stream for full.tif...
+2024-11-05 13:53:31 - Full image dimensions: Width = 7200, Height = 5399
+2024-11-05 13:53:31 - Opening blob stream for medium.gif...
+2024-11-05 13:53:31 - Medium image dimensions: Width = 1200, Height = 899
+2024-11-05 13:53:31 - Aspect ratios match within threshold. Changed = 0
+2024-11-05 13:53:31 - Metadata updated for blob 3184900/full.tif
+2024-11-05 13:53:31 - Changed is 0, no action needed.
+2024-11-05 13:53:33 - Database status updated to '2' with width, height, gif dimensions, and changed.
+2024-11-05 13:53:33 - =============================================
+2024-11-05 13:53:33 - Attempting to fetch an image for processing...
+2024-11-05 13:53:33 - Processing ImageID: 3184901
+2024-11-05 13:53:33 - Opening blob stream for full.tif...
+2024-11-05 13:53:33 - Full image dimensions: Width = 7200, Height = 5402
+2024-11-05 13:53:33 - Opening blob stream for medium.gif...
+2024-11-05 13:53:33 - Medium image dimensions: Width = 1200, Height = 900
+2024-11-05 13:53:33 - Aspect ratios match within threshold. Changed = 0
+2024-11-05 13:53:34 - Metadata updated for blob 3184901/full.tif
+2024-11-05 13:53:34 - Changed is 0, no action needed.
+2024-11-05 13:53:35 - Database status updated to '2' with width, height, gif dimensions, and changed.
+2024-11-05 13:53:35 - =============================================
+2024-11-05 13:53:35 - Attempting to fetch an image for processing...
+2024-11-05 13:53:35 - Processing ImageID: 3185346
+2024-11-05 13:53:35 - Opening blob stream for full.tif...
+2024-11-05 13:53:35 - Full image dimensions: Width = 4800, Height = 2792
+2024-11-05 13:53:35 - Opening blob stream for medium.gif...
+2024-11-05 13:53:35 - Medium image dimensions: Width = 1199, Height = 697
+2024-11-05 13:53:35 - Aspect ratios match within threshold. Changed = 0
+2024-11-05 13:53:35 - Metadata updated for blob 3185346/full.tif
+2024-11-05 13:53:35 - Changed is 0, no action needed.
+2024-11-05 13:53:36 - Database status updated to '2' with width, height, gif dimensions, and changed.
+2024-11-05 13:53:36 - =============================================
+2024-11-05 13:53:36 - Attempting to fetch an image for processing...
+2024-11-05 13:53:36 - Processing ImageID: 3185442
+2024-11-05 13:53:36 - Opening blob stream for full.tif...
+2024-11-05 13:53:36 - Full image dimensions: Width = 10800, Height = 14363
+2024-11-05 13:53:36 - Opening blob stream for medium.gif...
+2024-11-05 13:53:36 - Medium image dimensions: Width = 1620, Height = 2154
+2024-11-05 13:53:36 - Aspect ratios match within threshold. Changed = 0
+2024-11-05 13:53:36 - Metadata updated for blob 3185442/full.tif
+2024-11-05 13:53:36 - Changed is 0, no action needed.
+2024-11-05 13:53:37 - Database status updated to '2' with width, height, gif dimensions, and changed.
+2024-11-05 13:53:37 - =============================================
+2024-11-05 13:53:37 - Attempting to fetch an image for processing...
+2024-11-05 13:53:37 - Processing ImageID: 3185443
+2024-11-05 13:53:37 - Opening blob stream for full.tif...
+2024-11-05 13:53:38 - Full image dimensions: Width = 4000, Height = 2999
+2024-11-05 13:53:38 - Opening blob stream for medium.gif...
+2024-11-05 13:53:38 - Medium image dimensions: Width = 800, Height = 599
+2024-11-05 13:53:38 - Aspect ratios match within threshold. Changed = 0
+2024-11-05 13:53:38 - Metadata updated for blob 3185443/full.tif
+2024-11-05 13:53:38 - Changed is 0, no action needed.
+2024-11-05 13:53:38 - Database status updated to '2' with width, height, gif dimensions, and changed.
+2024-11-05 13:53:38 - =============================================
+2024-11-05 13:53:38 - Attempting to fetch an image for processing...
+2024-11-05 13:53:38 - Processing ImageID: 3185461
+2024-11-05 13:53:39 - Opening blob stream for full.tif...
+2024-11-05 13:53:39 - Full image dimensions: Width = 7200, Height = 5402
+2024-11-05 13:53:39 - Opening blob stream for medium.gif...
+2024-11-05 13:53:39 - Medium image dimensions: Width = 1200, Height = 900
+2024-11-05 13:53:39 - Aspect ratios match within threshold. Changed = 0
+2024-11-05 13:53:39 - Metadata updated for blob 3185461/full.tif
+2024-11-05 13:53:39 - Changed is 0, no action needed.
+2024-11-05 13:53:40 - Database status updated to '2' with width, height, gif dimensions, and changed.
+2024-11-05 13:53:40 - =============================================
+2024-11-05 13:53:40 - Attempting to fetch an image for processing...
+2024-11-05 13:53:40 - Processing ImageID: 3185462
+2024-11-05 13:53:40 - Opening blob stream for full.tif...
+2024-11-05 13:53:40 - Full image dimensions: Width = 7200, Height = 5411
+2024-11-05 13:53:40 - Opening blob stream for medium.gif...
+2024-11-05 13:53:40 - Medium image dimensions: Width = 1200, Height = 901
+2024-11-05 13:53:40 - Aspect ratios match within threshold. Changed = 0
+2024-11-05 13:53:41 - Metadata updated for blob 3185462/full.tif
+2024-11-05 13:53:41 - Changed is 0, no action needed.
+2024-11-05 13:53:41 - Database status updated to '2' with width, height, gif dimensions, and changed.
+2024-11-05 13:53:41 - =============================================
+2024-11-05 13:53:41 - Attempting to fetch an image for processing...
+2024-11-05 13:53:41 - Processing ImageID: 3185472
+2024-11-05 13:53:41 - Opening blob stream for full.tif...
+2024-11-05 13:53:42 - Full image dimensions: Width = 7165, Height = 5400
+2024-11-05 13:53:42 - Opening blob stream for medium.gif...
+2024-11-05 13:53:42 - Medium image dimensions: Width = 796, Height = 600
+2024-11-05 13:53:42 - Aspect ratios match within threshold. Changed = 0
+2024-11-05 13:53:42 - Metadata updated for blob 3185472/full.tif
+2024-11-05 13:53:42 - Changed is 0, no action needed.
+2024-11-05 13:53:43 - Database status updated to '2' with width, height, gif dimensions, and changed.
+2024-11-05 13:53:43 - =============================================
+2024-11-05 13:53:43 - Attempting to fetch an image for processing...
+2024-11-05 13:53:43 - Processing ImageID: 3185996
+2024-11-05 13:53:43 - Opening blob stream for full.tif...
+2024-11-05 13:53:43 - Full image dimensions: Width = 3371, Height = 2192
+2024-11-05 13:53:43 - Opening blob stream for medium.gif...
+2024-11-05 13:53:43 - Medium image dimensions: Width = 1011, Height = 657
+2024-11-05 13:53:43 - Aspect ratios match within threshold. Changed = 0
+2024-11-05 13:53:44 - Metadata updated for blob 3185996/full.tif
+2024-11-05 13:53:44 - Changed is 0, no action needed.
+2024-11-05 13:53:44 - Database status updated to '2' with width, height, gif dimensions, and changed.
+2024-11-05 13:53:44 - =============================================
+2024-11-05 13:53:44 - Attempting to fetch an image for processing...
+2024-11-05 13:53:44 - Processing ImageID: 3186119
+2024-11-05 13:53:44 - Opening blob stream for full.tif...
+2024-11-05 13:53:45 - Full image dimensions: Width = 10744, Height = 5945
+2024-11-05 13:53:45 - Opening blob stream for medium.gif...
+2024-11-05 13:53:45 - Medium image dimensions: Width = 1611, Height = 891
+2024-11-05 13:53:45 - Aspect ratios match within threshold. Changed = 0
+2024-11-05 13:53:46 - Metadata updated for blob 3186119/full.tif
+2024-11-05 13:53:46 - Changed is 0, no action needed.
+2024-11-05 13:53:46 - Database status updated to '2' with width, height, gif dimensions, and changed.
+2024-11-05 13:53:46 - =============================================
+2024-11-05 13:53:46 - Attempting to fetch an image for processing...
+2024-11-05 13:53:46 - Processing ImageID: 3186200
+2024-11-05 13:53:46 - Opening blob stream for full.tif...
+2024-11-05 13:53:46 - Full image dimensions: Width = 9062, Height = 6720
+2024-11-05 13:53:46 - Opening blob stream for medium.gif...
+2024-11-05 13:53:47 - Medium image dimensions: Width = 1359, Height = 1008
+2024-11-05 13:53:47 - Aspect ratios match within threshold. Changed = 0
+2024-11-05 13:53:47 - Metadata updated for blob 3186200/full.tif
+2024-11-05 13:53:47 - Changed is 0, no action needed.
+2024-11-05 13:53:48 - Database status updated to '2' with width, height, gif dimensions, and changed.
+2024-11-05 13:53:48 - =============================================
+2024-11-05 13:53:48 - Attempting to fetch an image for processing...
+2024-11-05 13:53:48 - Processing ImageID: 3186203
+2024-11-05 13:53:48 - Opening blob stream for full.tif...
+2024-11-05 13:53:48 - Full image dimensions: Width = 2444, Height = 4000
+2024-11-05 13:53:48 - Opening blob stream for medium.gif...
+2024-11-05 13:53:48 - Medium image dimensions: Width = 733, Height = 1200
+2024-11-05 13:53:48 - Aspect ratios match within threshold. Changed = 0
+2024-11-05 13:53:48 - Metadata updated for blob 3186203/full.tif
+2024-11-05 13:53:48 - Changed is 0, no action needed.
+2024-11-05 13:53:49 - Database status updated to '2' with width, height, gif dimensions, and changed.
+2024-11-05 13:53:49 - =============================================
+2024-11-05 13:53:49 - Attempting to fetch an image for processing...
+2024-11-05 13:53:49 - Processing ImageID: 3186339
+2024-11-05 13:53:49 - Opening blob stream for full.tif...
+2024-11-05 13:53:49 - Full image dimensions: Width = 7200, Height = 5384
+2024-11-05 13:53:49 - Opening blob stream for medium.gif...
+2024-11-05 13:53:49 - Medium image dimensions: Width = 1200, Height = 897
+2024-11-05 13:53:49 - Aspect ratios match within threshold. Changed = 0
+2024-11-05 13:53:50 - Metadata updated for blob 3186339/full.tif
+2024-11-05 13:53:50 - Changed is 0, no action needed.
+2024-11-05 13:53:50 - Database status updated to '2' with width, height, gif dimensions, and changed.
+2024-11-05 13:53:50 - =============================================
+2024-11-05 13:53:50 - Attempting to fetch an image for processing...
+2024-11-05 13:53:50 - Processing ImageID: 3186341
+2024-11-05 13:53:50 - Opening blob stream for full.tif...
+2024-11-05 13:53:51 - Full image dimensions: Width = 7200, Height = 5384
+2024-11-05 13:53:51 - Opening blob stream for medium.gif...
+2024-11-05 13:53:51 - Medium image dimensions: Width = 1200, Height = 897
+2024-11-05 13:53:51 - Aspect ratios match within threshold. Changed = 0
+2024-11-05 13:53:51 - Metadata updated for blob 3186341/full.tif
+2024-11-05 13:53:51 - Changed is 0, no action needed.
+2024-11-05 13:53:51 - Database status updated to '2' with width, height, gif dimensions, and changed.
+2024-11-05 13:53:51 - =============================================
+2024-11-05 13:53:51 - Attempting to fetch an image for processing...
+2024-11-05 13:53:51 - Processing ImageID: 3186343
+2024-11-05 13:53:52 - Opening blob stream for full.tif...
+2024-11-05 13:53:52 - Full image dimensions: Width = 7200, Height = 5387
+2024-11-05 13:53:52 - Opening blob stream for medium.gif...
+2024-11-05 13:53:52 - Medium image dimensions: Width = 1200, Height = 897
+2024-11-05 13:53:52 - Aspect ratios match within threshold. Changed = 0
+2024-11-05 13:53:52 - Metadata updated for blob 3186343/full.tif
+2024-11-05 13:53:52 - Changed is 0, no action needed.
+2024-11-05 13:53:53 - Database status updated to '2' with width, height, gif dimensions, and changed.
+2024-11-05 13:53:53 - =============================================
+2024-11-05 13:53:53 - Attempting to fetch an image for processing...
+2024-11-05 13:53:53 - Processing ImageID: 3186344
+2024-11-05 13:53:53 - Opening blob stream for full.tif...
+2024-11-05 13:53:53 - Full image dimensions: Width = 7200, Height = 5420
+2024-11-05 13:53:53 - Opening blob stream for medium.gif...
+2024-11-05 13:53:53 - Medium image dimensions: Width = 1200, Height = 903
+2024-11-05 13:53:53 - Aspect ratios match within threshold. Changed = 0
+2024-11-05 13:53:53 - Metadata updated for blob 3186344/full.tif
+2024-11-05 13:53:53 - Changed is 0, no action needed.
+2024-11-05 13:53:54 - Database status updated to '2' with width, height, gif dimensions, and changed.
+2024-11-05 13:53:54 - =============================================
+2024-11-05 13:53:54 - Attempting to fetch an image for processing...
+2024-11-05 13:53:54 - Processing ImageID: 3186345
+2024-11-05 13:53:54 - Opening blob stream for full.tif...
+2024-11-05 13:53:54 - Full image dimensions: Width = 7200, Height = 5378
+2024-11-05 13:53:54 - Opening blob stream for medium.gif...
+2024-11-05 13:53:54 - Medium image dimensions: Width = 1200, Height = 896
+2024-11-05 13:53:54 - Aspect ratios match within threshold. Changed = 0
+2024-11-05 13:53:54 - Metadata updated for blob 3186345/full.tif
+2024-11-05 13:53:54 - Changed is 0, no action needed.
+2024-11-05 13:53:55 - Database status updated to '2' with width, height, gif dimensions, and changed.
+2024-11-05 13:53:55 - =============================================
+2024-11-05 13:53:55 - Attempting to fetch an image for processing...
+2024-11-05 13:53:55 - Processing ImageID: 3186346
+2024-11-05 13:53:55 - Opening blob stream for full.tif...
+2024-11-05 13:53:55 - Full image dimensions: Width = 7200, Height = 5387
+2024-11-05 13:53:55 - Opening blob stream for medium.gif...
+2024-11-05 13:53:55 - Medium image dimensions: Width = 1200, Height = 897
+2024-11-05 13:53:55 - Aspect ratios match within threshold. Changed = 0
+2024-11-05 13:53:56 - Metadata updated for blob 3186346/full.tif
+2024-11-05 13:53:56 - Changed is 0, no action needed.
+2024-11-05 13:53:56 - Database status updated to '2' with width, height, gif dimensions, and changed.
+2024-11-05 13:53:56 - =============================================
+2024-11-05 13:53:56 - Attempting to fetch an image for processing...
+2024-11-05 13:53:56 - Processing ImageID: 3186347
+2024-11-05 13:53:56 - Opening blob stream for full.tif...
+2024-11-05 13:53:57 - Full image dimensions: Width = 3600, Height = 7583
+2024-11-05 13:53:57 - Opening blob stream for medium.gif...
+2024-11-05 13:53:57 - Medium image dimensions: Width = 569, Height = 1200
+2024-11-05 13:53:57 - Aspect ratios match within threshold. Changed = 0
+2024-11-05 13:53:57 - Metadata updated for blob 3186347/full.tif
+2024-11-05 13:53:57 - Changed is 0, no action needed.
+2024-11-05 13:53:57 - Database status updated to '2' with width, height, gif dimensions, and changed.
+2024-11-05 13:53:57 - =============================================
+2024-11-05 13:53:57 - Attempting to fetch an image for processing...
+2024-11-05 13:53:57 - Processing ImageID: 3186348
+2024-11-05 13:53:58 - Opening blob stream for full.tif...
+2024-11-05 13:53:58 - Full image dimensions: Width = 5400, Height = 7130
+2024-11-05 13:53:58 - Opening blob stream for medium.gif...
+2024-11-05 13:53:58 - Medium image dimensions: Width = 908, Height = 1200
+2024-11-05 13:53:58 - Aspect ratios match within threshold. Changed = 0
+2024-11-05 13:53:58 - Metadata updated for blob 3186348/full.tif
+2024-11-05 13:53:58 - Changed is 0, no action needed.
+2024-11-05 13:53:59 - Database status updated to '2' with width, height, gif dimensions, and changed.
+2024-11-05 13:53:59 - =============================================
+2024-11-05 13:53:59 - Attempting to fetch an image for processing...
+2024-11-05 13:53:59 - Processing ImageID: 3186352
+2024-11-05 13:53:59 - Opening blob stream for full.tif...
+2024-11-05 13:53:59 - Full image dimensions: Width = 7200, Height = 5390
+2024-11-05 13:53:59 - Opening blob stream for medium.gif...
+2024-11-05 13:53:59 - Medium image dimensions: Width = 1200, Height = 898
+2024-11-05 13:53:59 - Aspect ratios match within threshold. Changed = 0
+2024-11-05 13:53:59 - Metadata updated for blob 3186352/full.tif
+2024-11-05 13:53:59 - Changed is 0, no action needed.
+2024-11-05 13:54:00 - Database status updated to '2' with width, height, gif dimensions, and changed.
+2024-11-05 13:54:00 - =============================================
+2024-11-05 13:54:00 - Attempting to fetch an image for processing...
+2024-11-05 13:54:00 - Processing ImageID: 3186353
+2024-11-05 13:54:00 - Opening blob stream for full.tif...
+2024-11-05 13:54:00 - Full image dimensions: Width = 3600, Height = 5078
+2024-11-05 13:54:00 - Opening blob stream for medium.gif...
+2024-11-05 13:54:00 - Medium image dimensions: Width = 850, Height = 1200
+2024-11-05 13:54:00 - Aspect ratios match within threshold. Changed = 0
+2024-11-05 13:54:01 - Metadata updated for blob 3186353/full.tif
+2024-11-05 13:54:01 - Changed is 0, no action needed.
+2024-11-05 13:54:02 - Database status updated to '2' with width, height, gif dimensions, and changed.
+2024-11-05 13:54:02 - =============================================
+2024-11-05 13:54:02 - Attempting to fetch an image for processing...
+2024-11-05 13:54:02 - Processing ImageID: 3186358
+2024-11-05 13:54:02 - Opening blob stream for full.tif...
+2024-11-05 13:54:03 - Full image dimensions: Width = 10800, Height = 7166
+2024-11-05 13:54:03 - Opening blob stream for medium.gif...
+2024-11-05 13:54:03 - Medium image dimensions: Width = 1620, Height = 1074
+2024-11-05 13:54:03 - Aspect ratios match within threshold. Changed = 0
+2024-11-05 13:54:03 - Metadata updated for blob 3186358/full.tif
+2024-11-05 13:54:03 - Changed is 0, no action needed.
+2024-11-05 13:54:04 - Database status updated to '2' with width, height, gif dimensions, and changed.
+2024-11-05 13:54:04 - =============================================
+2024-11-05 13:54:04 - Attempting to fetch an image for processing...
+2024-11-05 13:54:04 - Processing ImageID: 3186359
+2024-11-05 13:54:04 - Opening blob stream for full.tif...
+2024-11-05 13:54:04 - Full image dimensions: Width = 7200, Height = 5396
+2024-11-05 13:54:04 - Opening blob stream for medium.gif...
+2024-11-05 13:54:04 - Medium image dimensions: Width = 1200, Height = 899
+2024-11-05 13:54:04 - Aspect ratios match within threshold. Changed = 0
+2024-11-05 13:54:04 - Metadata updated for blob 3186359/full.tif
+2024-11-05 13:54:04 - Changed is 0, no action needed.
+2024-11-05 13:54:05 - Database status updated to '2' with width, height, gif dimensions, and changed.
+2024-11-05 13:54:05 - =============================================
+2024-11-05 13:54:05 - Attempting to fetch an image for processing...
+2024-11-05 13:54:05 - Processing ImageID: 3186499
+2024-11-05 13:54:05 - Opening blob stream for full.tif...
+2024-11-05 13:54:06 - Full image dimensions: Width = 4531, Height = 3360
+2024-11-05 13:54:06 - Opening blob stream for medium.gif...
+2024-11-05 13:54:06 - Medium image dimensions: Width = 800, Height = 593
+2024-11-05 13:54:06 - Aspect ratios match within threshold. Changed = 0
+2024-11-05 13:54:06 - Metadata updated for blob 3186499/full.tif
+2024-11-05 13:54:06 - Changed is 0, no action needed.
+2024-11-05 13:54:06 - Database status updated to '2' with width, height, gif dimensions, and changed.
+2024-11-05 13:54:06 - =============================================
+2024-11-05 13:54:06 - Attempting to fetch an image for processing...
+2024-11-05 13:54:06 - Processing ImageID: 3186766
+2024-11-05 13:54:07 - Opening blob stream for full.tif...
+2024-11-05 13:54:07 - Full image dimensions: Width = 10800, Height = 6599
+2024-11-05 13:54:07 - Opening blob stream for medium.gif...
+2024-11-05 13:54:07 - Medium image dimensions: Width = 1620, Height = 989
+2024-11-05 13:54:07 - Aspect ratios match within threshold. Changed = 0
+2024-11-05 13:54:07 - Metadata updated for blob 3186766/full.tif
+2024-11-05 13:54:07 - Changed is 0, no action needed.
+2024-11-05 13:54:08 - Database status updated to '2' with width, height, gif dimensions, and changed.
+2024-11-05 13:54:08 - =============================================
+2024-11-05 13:54:08 - Attempting to fetch an image for processing...
+2024-11-05 13:54:08 - Processing ImageID: 3186767
+2024-11-05 13:54:08 - Opening blob stream for full.tif...
+2024-11-05 13:54:08 - Full image dimensions: Width = 10800, Height = 7193
+2024-11-05 13:54:08 - Opening blob stream for medium.gif...
+2024-11-05 13:54:08 - Medium image dimensions: Width = 1620, Height = 1078
+2024-11-05 13:54:08 - Aspect ratios match within threshold. Changed = 0
+2024-11-05 13:54:08 - Metadata updated for blob 3186767/full.tif
+2024-11-05 13:54:08 - Changed is 0, no action needed.
+2024-11-05 13:54:09 - Database status updated to '2' with width, height, gif dimensions, and changed.
+2024-11-05 13:54:09 - =============================================
+2024-11-05 13:54:09 - Attempting to fetch an image for processing...
+2024-11-05 13:54:09 - Processing ImageID: 3186768
+2024-11-05 13:54:09 - Opening blob stream for full.tif...
+2024-11-05 13:54:09 - Full image dimensions: Width = 10800, Height = 7220
+2024-11-05 13:54:09 - Opening blob stream for medium.gif...
+2024-11-05 13:54:09 - Medium image dimensions: Width = 1620, Height = 1083
+2024-11-05 13:54:09 - Aspect ratios match within threshold. Changed = 0
+2024-11-05 13:54:09 - Metadata updated for blob 3186768/full.tif
+2024-11-05 13:54:09 - Changed is 0, no action needed.
+2024-11-05 13:54:10 - Database status updated to '2' with width, height, gif dimensions, and changed.
+2024-11-05 13:54:10 - =============================================
+2024-11-05 13:54:10 - Attempting to fetch an image for processing...
+2024-11-05 13:54:10 - Processing ImageID: 3186769
+2024-11-05 13:54:10 - Opening blob stream for full.tif...
+2024-11-05 13:54:10 - Full image dimensions: Width = 10800, Height = 7190
+2024-11-05 13:54:10 - Opening blob stream for medium.gif...
+2024-11-05 13:54:10 - Medium image dimensions: Width = 1620, Height = 1078
+2024-11-05 13:54:10 - Aspect ratios match within threshold. Changed = 0
+2024-11-05 13:54:10 - Metadata updated for blob 3186769/full.tif
+2024-11-05 13:54:10 - Changed is 0, no action needed.
+2024-11-05 13:54:11 - Database status updated to '2' with width, height, gif dimensions, and changed.
+2024-11-05 13:54:11 - =============================================
+2024-11-05 13:54:11 - Attempting to fetch an image for processing...
+2024-11-05 13:54:11 - Processing ImageID: 3186770
+2024-11-05 13:54:11 - Opening blob stream for full.tif...
+2024-11-05 13:54:11 - Full image dimensions: Width = 10800, Height = 6611
+2024-11-05 13:54:11 - Opening blob stream for medium.gif...
+2024-11-05 13:54:12 - Medium image dimensions: Width = 1620, Height = 991
+2024-11-05 13:54:12 - Aspect ratios match within threshold. Changed = 0
+2024-11-05 13:54:12 - Metadata updated for blob 3186770/full.tif
+2024-11-05 13:54:12 - Changed is 0, no action needed.
+2024-11-05 13:54:12 - Database status updated to '2' with width, height, gif dimensions, and changed.
+2024-11-05 13:54:12 - =============================================
+2024-11-05 13:54:12 - Attempting to fetch an image for processing...
+2024-11-05 13:54:12 - Processing ImageID: 3186771
+2024-11-05 13:54:12 - Opening blob stream for full.tif...
+2024-11-05 13:54:13 - Full image dimensions: Width = 7200, Height = 5399
+2024-11-05 13:54:13 - Opening blob stream for medium.gif...
+2024-11-05 13:54:13 - Medium image dimensions: Width = 1200, Height = 899
+2024-11-05 13:54:13 - Aspect ratios match within threshold. Changed = 0
+2024-11-05 13:54:13 - Metadata updated for blob 3186771/full.tif
+2024-11-05 13:54:13 - Changed is 0, no action needed.
+2024-11-05 13:54:13 - Database status updated to '2' with width, height, gif dimensions, and changed.
+2024-11-05 13:54:13 - =============================================
+2024-11-05 13:54:13 - Attempting to fetch an image for processing...
+2024-11-05 13:54:13 - Processing ImageID: 3186773
+2024-11-05 13:54:14 - Opening blob stream for full.tif...
+2024-11-05 13:54:14 - Full image dimensions: Width = 10800, Height = 7220
+2024-11-05 13:54:14 - Opening blob stream for medium.gif...
+2024-11-05 13:54:14 - Medium image dimensions: Width = 1620, Height = 1083
+2024-11-05 13:54:14 - Aspect ratios match within threshold. Changed = 0
+2024-11-05 13:54:14 - Metadata updated for blob 3186773/full.tif
+2024-11-05 13:54:14 - Changed is 0, no action needed.
+2024-11-05 13:54:15 - Database status updated to '2' with width, height, gif dimensions, and changed.
+2024-11-05 13:54:15 - =============================================
+2024-11-05 13:54:15 - Attempting to fetch an image for processing...
+2024-11-05 13:54:15 - Processing ImageID: 3186775
+2024-11-05 13:54:15 - Opening blob stream for full.tif...
+2024-11-05 13:54:15 - Full image dimensions: Width = 7200, Height = 5102
+2024-11-05 13:54:15 - Opening blob stream for medium.gif...
+2024-11-05 13:54:15 - Medium image dimensions: Width = 1200, Height = 850
+2024-11-05 13:54:15 - Aspect ratios match within threshold. Changed = 0
+2024-11-05 13:54:16 - Metadata updated for blob 3186775/full.tif
+2024-11-05 13:54:16 - Changed is 0, no action needed.
+2024-11-05 13:54:16 - Database status updated to '2' with width, height, gif dimensions, and changed.
+2024-11-05 13:54:16 - =============================================
+2024-11-05 13:54:16 - Attempting to fetch an image for processing...
+2024-11-05 13:54:16 - Processing ImageID: 3186776
+2024-11-05 13:54:16 - Opening blob stream for full.tif...
+2024-11-05 13:54:16 - Full image dimensions: Width = 7200, Height = 8459
+2024-11-05 13:54:16 - Opening blob stream for medium.gif...
+2024-11-05 13:54:17 - Medium image dimensions: Width = 1080, Height = 1268
+2024-11-05 13:54:17 - Aspect ratios match within threshold. Changed = 0
+2024-11-05 13:54:17 - Metadata updated for blob 3186776/full.tif
+2024-11-05 13:54:17 - Changed is 0, no action needed.
+2024-11-05 13:54:18 - Database status updated to '2' with width, height, gif dimensions, and changed.
+2024-11-05 13:54:18 - =============================================
+2024-11-05 13:54:18 - Attempting to fetch an image for processing...
+2024-11-05 13:54:18 - Processing ImageID: 3186777
+2024-11-05 13:54:18 - Opening blob stream for full.tif...
+2024-11-05 13:54:18 - Full image dimensions: Width = 10800, Height = 7211
+2024-11-05 13:54:18 - Opening blob stream for medium.gif...
+2024-11-05 13:54:18 - Medium image dimensions: Width = 1620, Height = 1081
+2024-11-05 13:54:18 - Aspect ratios match within threshold. Changed = 0
+2024-11-05 13:54:18 - Metadata updated for blob 3186777/full.tif
+2024-11-05 13:54:18 - Changed is 0, no action needed.
+2024-11-05 13:54:19 - Database status updated to '2' with width, height, gif dimensions, and changed.
+2024-11-05 13:54:19 - =============================================
+2024-11-05 13:54:19 - Attempting to fetch an image for processing...
+2024-11-05 13:54:19 - Processing ImageID: 3186904
+2024-11-05 13:54:19 - Opening blob stream for full.tif...
+2024-11-05 13:54:19 - Full image dimensions: Width = 7200, Height = 5399
+2024-11-05 13:54:19 - Opening blob stream for medium.gif...
+2024-11-05 13:54:20 - Medium image dimensions: Width = 1200, Height = 899
+2024-11-05 13:54:20 - Aspect ratios match within threshold. Changed = 0
+2024-11-05 13:54:20 - Metadata updated for blob 3186904/full.tif
+2024-11-05 13:54:20 - Changed is 0, no action needed.
+2024-11-05 13:54:20 - Database status updated to '2' with width, height, gif dimensions, and changed.
+2024-11-05 13:54:20 - =============================================
+2024-11-05 13:54:20 - Attempting to fetch an image for processing...
+2024-11-05 13:54:20 - Processing ImageID: 3186905
+2024-11-05 13:54:20 - Opening blob stream for full.tif...
+2024-11-05 13:54:21 - Full image dimensions: Width = 10800, Height = 14405
+2024-11-05 13:54:21 - Opening blob stream for medium.gif...
+2024-11-05 13:54:21 - Medium image dimensions: Width = 2160, Height = 1620
+2024-11-05 13:54:21 - Aspect ratios match after rotation within threshold. Changed = 1
+2024-11-05 13:54:21 - Determining rotation direction using image comparison...
+2024-11-05 13:54:22 - Difference without rotation: 0
+2024-11-05 13:54:22 - Difference after 90 degrees CW rotation: 0
+2024-11-05 13:54:22 - Difference after 90 degrees CCW rotation: 0
+2024-11-05 13:54:22 - Rotation direction determined: 90 degrees clockwise.
+2024-11-05 13:54:22 - Metadata updated for blob 3186905/full.tif
+2024-11-05 13:54:22 - Changed is 1, generating high.gif from full.tif with rotation...
+2024-11-05 13:54:29 - Applied rotation of 90 degrees.
+2024-11-05 13:54:57 - Conversion to high.gif complete.
+2024-11-05 13:54:59 - Regenerated high.gif from full.tif and uploaded for ImageID 3186905
+2024-11-05 13:55:00 - Database status updated to '4' with width, height, gif dimensions, and changed.
+2024-11-05 13:55:00 - =============================================
+2024-11-05 13:55:00 - Attempting to fetch an image for processing...
+2024-11-05 13:55:00 - Processing ImageID: 3186908
+2024-11-05 13:55:00 - Opening blob stream for full.tif...
+2024-11-05 13:55:00 - Full image dimensions: Width = 5400, Height = 7172
+2024-11-05 13:55:00 - Opening blob stream for medium.gif...
+2024-11-05 13:55:00 - Medium image dimensions: Width = 903, Height = 1200
+2024-11-05 13:55:00 - Aspect ratios match within threshold. Changed = 0
+2024-11-05 13:55:00 - Metadata updated for blob 3186908/full.tif
+2024-11-05 13:55:00 - Changed is 0, no action needed.
+2024-11-05 13:55:01 - Database status updated to '2' with width, height, gif dimensions, and changed.
+2024-11-05 13:55:01 - =============================================
+2024-11-05 13:55:01 - Attempting to fetch an image for processing...
+2024-11-05 13:55:01 - Processing ImageID: 3186909
+2024-11-05 13:55:01 - Opening blob stream for full.tif...
+2024-11-05 13:55:01 - Full image dimensions: Width = 7200, Height = 5399
+2024-11-05 13:55:01 - Opening blob stream for medium.gif...
+2024-11-05 13:55:01 - Medium image dimensions: Width = 1200, Height = 899
+2024-11-05 13:55:01 - Aspect ratios match within threshold. Changed = 0
+2024-11-05 13:55:01 - Metadata updated for blob 3186909/full.tif
+2024-11-05 13:55:01 - Changed is 0, no action needed.
+2024-11-05 13:55:03 - Database status updated to '2' with width, height, gif dimensions, and changed.
+2024-11-05 13:55:03 - =============================================
+2024-11-05 13:55:03 - Attempting to fetch an image for processing...
+2024-11-05 13:55:03 - Processing ImageID: 3186910
+2024-11-05 13:55:03 - Opening blob stream for full.tif...
+2024-11-05 13:55:03 - Full image dimensions: Width = 7200, Height = 5402
+2024-11-05 13:55:03 - Opening blob stream for medium.gif...
+2024-11-05 13:55:03 - Medium image dimensions: Width = 1200, Height = 900
+2024-11-05 13:55:03 - Aspect ratios match within threshold. Changed = 0
+2024-11-05 13:55:03 - Metadata updated for blob 3186910/full.tif
+2024-11-05 13:55:03 - Changed is 0, no action needed.
+2024-11-05 13:55:04 - Database status updated to '2' with width, height, gif dimensions, and changed.
+2024-11-05 13:55:04 - =============================================
+2024-11-05 13:55:04 - Attempting to fetch an image for processing...
+2024-11-05 13:55:04 - Processing ImageID: 3186914
+2024-11-05 13:55:04 - Opening blob stream for full.tif...
+2024-11-05 13:55:04 - Full image dimensions: Width = 7200, Height = 5396
+2024-11-05 13:55:04 - Opening blob stream for medium.gif...
+2024-11-05 13:55:04 - Medium image dimensions: Width = 1200, Height = 899
+2024-11-05 13:55:04 - Aspect ratios match within threshold. Changed = 0
+2024-11-05 13:55:04 - Metadata updated for blob 3186914/full.tif
+2024-11-05 13:55:04 - Changed is 0, no action needed.
+2024-11-05 13:55:05 - Database status updated to '2' with width, height, gif dimensions, and changed.
+2024-11-05 13:55:05 - =============================================
+2024-11-05 13:55:05 - Attempting to fetch an image for processing...
+2024-11-05 13:55:05 - Processing ImageID: 3187497
+2024-11-05 13:55:05 - Opening blob stream for full.tif...
+2024-11-05 13:55:05 - Full image dimensions: Width = 6968, Height = 11417
+2024-11-05 13:55:05 - Opening blob stream for medium.gif...
+2024-11-05 13:55:06 - Medium image dimensions: Width = 1712, Height = 1045
+2024-11-05 13:55:06 - Aspect ratios match after rotation within threshold. Changed = 1
+2024-11-05 13:55:06 - Determining rotation direction using image comparison...
+2024-11-05 13:55:06 - Difference without rotation: 0
+2024-11-05 13:55:06 - Difference after 90 degrees CW rotation: 0
+2024-11-05 13:55:06 - Difference after 90 degrees CCW rotation: 0
+2024-11-05 13:55:06 - Rotation direction determined: 90 degrees clockwise.
+2024-11-05 13:55:07 - Metadata updated for blob 3187497/full.tif
+2024-11-05 13:55:07 - Changed is 1, generating high.gif from full.tif with rotation...
+2024-11-05 13:55:12 - Applied rotation of 90 degrees.
+2024-11-05 13:55:35 - Conversion to high.gif complete.
+2024-11-05 13:55:36 - Regenerated high.gif from full.tif and uploaded for ImageID 3187497
+2024-11-05 13:55:37 - Database status updated to '4' with width, height, gif dimensions, and changed.
+2024-11-05 13:55:37 - =============================================
+2024-11-05 13:55:37 - Attempting to fetch an image for processing...
+2024-11-05 13:55:37 - Processing ImageID: 3187499
+2024-11-05 13:55:37 - Opening blob stream for full.tif...
+2024-11-05 13:55:37 - Full image dimensions: Width = 5394, Height = 7233
+2024-11-05 13:55:41 - Opening blob stream for medium.gif...
+2024-11-05 13:55:41 - Medium image dimensions: Width = 894, Height = 1200
+2024-11-05 13:55:41 - Aspect ratios match within threshold. Changed = 0
+2024-11-05 13:55:41 - Metadata updated for blob 3187499/full.tif
+2024-11-05 13:55:41 - Changed is 0, no action needed.
+2024-11-05 13:55:42 - Database status updated to '2' with width, height, gif dimensions, and changed.
+2024-11-05 13:55:42 - =============================================
+2024-11-05 13:55:42 - Attempting to fetch an image for processing...
+2024-11-05 13:55:42 - Processing ImageID: 3187582
+2024-11-05 13:55:42 - Opening blob stream for full.tif...
+2024-11-05 13:55:43 - Full image dimensions: Width = 20056, Height = 3000
+2024-11-05 13:55:43 - Opening blob stream for medium.gif...
+2024-11-05 13:55:43 - Medium image dimensions: Width = 3008, Height = 450
+2024-11-05 13:55:43 - Aspect ratios match within threshold. Changed = 0
+2024-11-05 13:55:43 - Metadata updated for blob 3187582/full.tif
+2024-11-05 13:55:43 - Changed is 0, no action needed.
+2024-11-05 13:55:44 - Database status updated to '2' with width, height, gif dimensions, and changed.
+2024-11-05 13:55:44 - =============================================
+2024-11-05 13:55:44 - Attempting to fetch an image for processing...
+2024-11-05 13:55:44 - Processing ImageID: 3187660
+2024-11-05 13:55:44 - Opening blob stream for full.tif...
+2024-11-05 13:55:44 - Full image dimensions: Width = 8334, Height = 9801
+2024-11-05 13:55:44 - Opening blob stream for medium.gif...
+2024-11-05 13:55:44 - Medium image dimensions: Width = 1470, Height = 1250
+2024-11-05 13:55:44 - Aspect ratios match after rotation within threshold. Changed = 1
+2024-11-05 13:55:44 - Determining rotation direction using image comparison...
+2024-11-05 13:55:45 - Difference without rotation: 0
+2024-11-05 13:55:45 - Difference after 90 degrees CW rotation: 0
+2024-11-05 13:55:45 - Difference after 90 degrees CCW rotation: 0
+2024-11-05 13:55:45 - Rotation direction determined: 90 degrees clockwise.
+2024-11-05 13:55:45 - Metadata updated for blob 3187660/full.tif
+2024-11-05 13:55:45 - Changed is 1, generating high.gif from full.tif with rotation...
+2024-11-05 13:55:46 - Applied rotation of 90 degrees.
+2024-11-05 13:56:15 - Conversion to high.gif complete.
+2024-11-05 13:56:15 - Regenerated high.gif from full.tif and uploaded for ImageID 3187660
+2024-11-05 13:56:17 - Database status updated to '4' with width, height, gif dimensions, and changed.
+2024-11-05 13:56:17 - =============================================
+2024-11-05 13:56:17 - Attempting to fetch an image for processing...
+2024-11-05 13:56:17 - Processing ImageID: 3187736
+2024-11-05 13:56:17 - Opening blob stream for full.tif...
+2024-11-05 13:56:17 - Full image dimensions: Width = 10540, Height = 10351
+2024-11-05 13:56:17 - Opening blob stream for medium.gif...
+2024-11-05 13:56:17 - Medium image dimensions: Width = 1552, Height = 1581
+2024-11-05 13:56:17 - Aspect ratios match within threshold. Changed = 0
+2024-11-05 13:56:17 - Metadata updated for blob 3187736/full.tif
+2024-11-05 13:56:17 - Changed is 0, no action needed.
+2024-11-05 13:56:18 - Database status updated to '2' with width, height, gif dimensions, and changed.
+2024-11-05 13:56:18 - =============================================
+2024-11-05 13:56:18 - Attempting to fetch an image for processing...
+2024-11-05 13:56:18 - Processing ImageID: 3187740
+2024-11-05 13:56:18 - Opening blob stream for full.tif...
+2024-11-05 13:56:18 - Full image dimensions: Width = 10295, Height = 8472
+2024-11-05 13:56:18 - Opening blob stream for medium.gif...
+2024-11-05 13:56:18 - Medium image dimensions: Width = 1544, Height = 1270
+2024-11-05 13:56:18 - Aspect ratios match within threshold. Changed = 0
+2024-11-05 13:56:18 - Metadata updated for blob 3187740/full.tif
+2024-11-05 13:56:18 - Changed is 0, no action needed.
+2024-11-05 13:56:19 - Database status updated to '2' with width, height, gif dimensions, and changed.
+2024-11-05 13:56:19 - =============================================
+2024-11-05 13:56:19 - Attempting to fetch an image for processing...
+2024-11-05 13:56:19 - Processing ImageID: 3188109
+2024-11-05 13:56:19 - Opening blob stream for full.tif...
+2024-11-05 13:56:19 - Full image dimensions: Width = 7200, Height = 10769
+2024-11-05 13:56:19 - Opening blob stream for medium.gif...
+2024-11-05 13:56:19 - Medium image dimensions: Width = 1080, Height = 1615
+2024-11-05 13:56:19 - Aspect ratios match within threshold. Changed = 0
+2024-11-05 13:56:19 - Metadata updated for blob 3188109/full.tif
+2024-11-05 13:56:19 - Changed is 0, no action needed.
+2024-11-05 13:56:20 - Database status updated to '2' with width, height, gif dimensions, and changed.
+2024-11-05 13:56:20 - =============================================
+2024-11-05 13:56:20 - Attempting to fetch an image for processing...
+2024-11-05 13:56:20 - Processing ImageID: 3188110
+2024-11-05 13:56:20 - Opening blob stream for full.tif...
+2024-11-05 13:56:20 - Full image dimensions: Width = 7200, Height = 5396
+2024-11-05 13:56:20 - Opening blob stream for medium.gif...
+2024-11-05 13:56:21 - Medium image dimensions: Width = 1200, Height = 899
+2024-11-05 13:56:21 - Aspect ratios match within threshold. Changed = 0
+2024-11-05 13:56:21 - Metadata updated for blob 3188110/full.tif
+2024-11-05 13:56:21 - Changed is 0, no action needed.
+2024-11-05 13:56:21 - Database status updated to '2' with width, height, gif dimensions, and changed.
+2024-11-05 13:56:21 - =============================================
+2024-11-05 13:56:21 - Attempting to fetch an image for processing...
+2024-11-05 13:56:21 - Processing ImageID: 3188111
+2024-11-05 13:56:21 - Opening blob stream for full.tif...
+2024-11-05 13:56:22 - Full image dimensions: Width = 10800, Height = 7172
+2024-11-05 13:56:22 - Opening blob stream for medium.gif...
+2024-11-05 13:56:22 - Medium image dimensions: Width = 1620, Height = 1075
+2024-11-05 13:56:22 - Aspect ratios match within threshold. Changed = 0
+2024-11-05 13:56:22 - Metadata updated for blob 3188111/full.tif
+2024-11-05 13:56:22 - Changed is 0, no action needed.
+2024-11-05 13:56:24 - Database status updated to '2' with width, height, gif dimensions, and changed.
+2024-11-05 13:56:24 - =============================================
+2024-11-05 13:56:24 - Attempting to fetch an image for processing...
+2024-11-05 13:56:24 - Processing ImageID: 3188113
+2024-11-05 13:56:24 - Opening blob stream for full.tif...
+2024-11-05 13:56:24 - Full image dimensions: Width = 7200, Height = 5399
+2024-11-05 13:56:24 - Opening blob stream for medium.gif...
+2024-11-05 13:56:24 - Medium image dimensions: Width = 1200, Height = 899
+2024-11-05 13:56:24 - Aspect ratios match within threshold. Changed = 0
+2024-11-05 13:56:24 - Metadata updated for blob 3188113/full.tif
+2024-11-05 13:56:24 - Changed is 0, no action needed.
+2024-11-05 13:56:26 - Database status updated to '2' with width, height, gif dimensions, and changed.
+2024-11-05 13:56:26 - =============================================
+2024-11-05 13:56:26 - Attempting to fetch an image for processing...
+2024-11-05 13:56:26 - Processing ImageID: 3188114
+2024-11-05 13:56:26 - Opening blob stream for full.tif...
+2024-11-05 13:56:26 - Full image dimensions: Width = 7200, Height = 5399
+2024-11-05 13:56:26 - Opening blob stream for medium.gif...
+2024-11-05 13:56:27 - Medium image dimensions: Width = 1200, Height = 899
+2024-11-05 13:56:27 - Aspect ratios match within threshold. Changed = 0
+2024-11-05 13:56:27 - Metadata updated for blob 3188114/full.tif
+2024-11-05 13:56:27 - Changed is 0, no action needed.
+2024-11-05 13:56:27 - Database status updated to '2' with width, height, gif dimensions, and changed.
+2024-11-05 13:56:27 - =============================================
+2024-11-05 13:56:27 - Attempting to fetch an image for processing...
+2024-11-05 13:56:27 - Processing ImageID: 3188115
+2024-11-05 13:56:28 - Opening blob stream for full.tif...
+2024-11-05 13:56:28 - Full image dimensions: Width = 7200, Height = 5405
+2024-11-05 13:56:28 - Opening blob stream for medium.gif...
+2024-11-05 13:56:28 - Medium image dimensions: Width = 1200, Height = 900
+2024-11-05 13:56:28 - Aspect ratios match within threshold. Changed = 0
+2024-11-05 13:56:28 - Metadata updated for blob 3188115/full.tif
+2024-11-05 13:56:28 - Changed is 0, no action needed.
+2024-11-05 13:56:29 - Database status updated to '2' with width, height, gif dimensions, and changed.
+2024-11-05 13:56:29 - =============================================
+2024-11-05 13:56:29 - Attempting to fetch an image for processing...
+2024-11-05 13:56:29 - Processing ImageID: 3188116
+2024-11-05 13:56:29 - Opening blob stream for full.tif...
+2024-11-05 13:56:29 - Full image dimensions: Width = 7200, Height = 14351
+2024-11-05 13:56:29 - Opening blob stream for medium.gif...
+2024-11-05 13:56:29 - Medium image dimensions: Width = 2152, Height = 1080
+2024-11-05 13:56:29 - Aspect ratios match after rotation within threshold. Changed = 1
+2024-11-05 13:56:29 - Determining rotation direction using image comparison...
+2024-11-05 13:56:30 - Difference without rotation: 0
+2024-11-05 13:56:30 - Difference after 90 degrees CW rotation: 0
+2024-11-05 13:56:30 - Difference after 90 degrees CCW rotation: 0
+2024-11-05 13:56:30 - Rotation direction determined: 90 degrees clockwise.
+2024-11-05 13:56:30 - Metadata updated for blob 3188116/full.tif
+2024-11-05 13:56:30 - Changed is 1, generating high.gif from full.tif with rotation...
+2024-11-05 13:56:34 - Applied rotation of 90 degrees.
+2024-11-05 13:56:54 - Conversion to high.gif complete.
+2024-11-05 13:56:55 - Regenerated high.gif from full.tif and uploaded for ImageID 3188116
+2024-11-05 13:56:55 - Database status updated to '4' with width, height, gif dimensions, and changed.
+2024-11-05 13:56:55 - =============================================
+2024-11-05 13:56:55 - Image metadata update process complete.
