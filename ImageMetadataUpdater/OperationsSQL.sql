@@ -25,3 +25,4 @@
 --select * from tblMetaUpdated where Status <> 2
 
 select * from tblMetaUpdated where Status = 2 and changed <> 0
+
