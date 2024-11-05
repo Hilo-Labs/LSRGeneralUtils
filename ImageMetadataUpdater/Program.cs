@@ -18,17 +18,16 @@ namespace ImageProcessorService
         const string storageAccountConnectionString = "DefaultEndpointsProtocol=https;AccountName=landsurveyrecords;AccountKey=daDBzSf4cY+bQmlDPWWvbWpKcqXcSh31R9PHpngwstppwsUV3wsTvt144WMlz+SOO9KjkZE0Xpg3DgRwiLGLDQ==;EndpointSuffix=core.windows.net";
         const string imageBlobName = "images-v3";
         const double Threshold = 0.15; // 15%
+        const int HighResolutionMaxSize = 10000;
 
         static async Task<int> Main(string[] args)
         {
             try
             {
                 Console.WriteLine("Initializing settings...");
-
                 Console.WriteLine("Starting image metadata update process...");
                 await UpdateImageMetadataAsync(dbConnectionString, storageAccountConnectionString);
                 Console.WriteLine("Image metadata update process complete.");
-
                 return 0;
             }
             catch (Exception ex)
@@ -42,7 +41,6 @@ namespace ImageProcessorService
         static async Task UpdateImageMetadataAsync(string dbConnectionString, string storageAccountConnectionString)
         {
             Console.WriteLine("Initializing Blob Service Client...");
-
             BlobServiceClient blobServiceClient = new BlobServiceClient(storageAccountConnectionString);
             BlobContainerClient blobContainerClient = blobServiceClient.GetBlobContainerClient(imageBlobName);
 
@@ -51,7 +49,6 @@ namespace ImageProcessorService
                 while (true)
                 {
                     Console.WriteLine("Attempting to fetch an image for processing...");
-
                     var updatingImageId = (await db.QueryAsync<int>(
                         @"UPDATE TOP(1) tblMetaUpdated
                           SET Status = -1
@@ -68,7 +65,6 @@ namespace ImageProcessorService
                     try
                     {
                         Console.WriteLine($"Processing ImageID: {updatingImageId}");
-
                         BlobClient blobClientFull = blobContainerClient.GetBlobClient($"{updatingImageId}/full.tif");
                         BlobClient blobClientMedium = blobContainerClient.GetBlobClient($"{updatingImageId}/medium.gif");
 
@@ -93,10 +89,8 @@ namespace ImageProcessorService
                                 using (var magickImage = new MagickImage())
                                 {
                                     magickImage.Ping(blobStreamFull);
-
                                     widthFull = magickImage.Width;
                                     heightFull = magickImage.Height;
-
                                     Console.WriteLine($"Full image dimensions: Width = {widthFull}, Height = {heightFull}");
                                 }
                             }
@@ -104,17 +98,14 @@ namespace ImageProcessorService
                             {
                                 Console.WriteLine($"Ping failed for ImageID {updatingImageId} full.tif: {pingEx.Message}");
                                 Console.WriteLine("Downloading the entire full.tif to read dimensions...");
-
                                 using (var fullImageStream = new MemoryStream())
                                 {
                                     await blobClientFull.DownloadToAsync(fullImageStream);
                                     fullImageStream.Position = 0;
-
                                     using (var magickImage = new MagickImage(fullImageStream))
                                     {
                                         widthFull = magickImage.Width;
                                         heightFull = magickImage.Height;
-
                                         Console.WriteLine($"Full image dimensions (after full download): Width = {widthFull}, Height = {heightFull}");
                                     }
                                 }
@@ -128,10 +119,8 @@ namespace ImageProcessorService
                             using (var magickImageMedium = new MagickImage())
                             {
                                 magickImageMedium.Ping(blobStreamMedium);
-
                                 widthMedium = magickImageMedium.Width;
                                 heightMedium = magickImageMedium.Height;
-
                                 Console.WriteLine($"Medium image dimensions: Width = {widthMedium}, Height = {heightMedium}");
                             }
                         }
@@ -179,8 +168,28 @@ namespace ImageProcessorService
 
                         Console.WriteLine($"Metadata updated for blob {updatingImageId}/full.tif");
 
+                        int statusToUpdate = 2;
+
+                        if (changed != 0)
+                        {
+                            Console.WriteLine("Changed is not zero, generating high.gif...");
+                            using (var blobStreamFull = await blobClientFull.OpenReadAsync(new BlobOpenReadOptions(allowModifications: false)))
+                            {
+                                using (var originalImage = new MagickImage(blobStreamFull))
+                                {
+                                    var highGifMemoryStream = ConvertToGifWithMaxSize(originalImage, HighResolutionMaxSize);
+                                    highGifMemoryStream.Position = 0;
+                                    Console.WriteLine("Conversion to high.gif complete.");
+                                    var highGifBlobClient = blobContainerClient.GetBlobClient($"{updatingImageId}/high.gif");
+                                    await highGifBlobClient.UploadAsync(highGifMemoryStream, overwrite: true);
+                                    Console.WriteLine($"Regenerated high.gif from full.tif and uploaded for ImageID {updatingImageId}");
+                                }
+                            }
+                            statusToUpdate = 4;
+                        }
+
                         await db.ExecuteAsync(
-                            @"UPDATE tblMetaUpdated SET Status = 2, Width = @Width, Height = @Height, GifWidth = @GifWidth, GifHeight = @GifHeight, Changed = @Changed WHERE ImageID = @ImageID",
+                            @"UPDATE tblMetaUpdated SET Status = @Status, Width = @Width, Height = @Height, GifWidth = @GifWidth, GifHeight = @GifHeight, Changed = @Changed WHERE ImageID = @ImageID",
                             new
                             {
                                 ImageID = updatingImageId,
@@ -188,15 +197,15 @@ namespace ImageProcessorService
                                 Height = (int)heightFull,
                                 GifWidth = (int)widthMedium,
                                 GifHeight = (int)heightMedium,
-                                Changed = changed
+                                Changed = changed,
+                                Status = statusToUpdate
                             }
                         );
-                        Console.WriteLine("Database status updated to '2' (success) with width, height, gif dimensions, and changed.");
+                        Console.WriteLine($"Database status updated to '{statusToUpdate}' with width, height, gif dimensions, and changed.");
                     }
                     catch (Exception ex)
                     {
                         Console.WriteLine($"Error processing ImageID {updatingImageId}: {ex.Message}");
-
                         await db.ExecuteAsync(
                             @"UPDATE tblMetaUpdated SET Status = -40, Reason = @Reason WHERE ImageID = @ImageID",
                             new
@@ -209,6 +218,41 @@ namespace ImageProcessorService
                     }
                 }
             }
+        }
+
+        public static MemoryStream ConvertToGifWithMaxSize(IMagickImage image, int maxSize)
+        {
+            var originalWidth = image.Width;
+            var originalHeight = image.Height;
+            var maxDimension = Math.Max(originalWidth, originalHeight);
+
+            if (maxDimension > maxSize)
+            {
+                double scaleFactor = (double)maxSize / maxDimension;
+                var newWidth = (uint)Math.Round(originalWidth * scaleFactor);
+                var newHeight = (uint)Math.Round(originalHeight * scaleFactor);
+
+                var resizeSettings = new MagickGeometry(newWidth, newHeight)
+                {
+                    IgnoreAspectRatio = false
+                };
+                image.Resize(resizeSettings);
+            }
+
+            image.Quantize(new QuantizeSettings
+            {
+                Colors = 128,
+                ColorSpace = ColorSpace.sRGB,
+                DitherMethod = DitherMethod.Riemersma
+            });
+
+            image.Format = MagickFormat.Gif;
+
+            var memoryStream = new MemoryStream();
+            image.Write(memoryStream);
+            memoryStream.Position = 0;
+
+            return memoryStream;
         }
     }
 }
