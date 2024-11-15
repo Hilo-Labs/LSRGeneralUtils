@@ -9,6 +9,7 @@ using ImageMagick;
 using System.Threading.Tasks;
 using System.Linq;
 using Azure;
+using System.Collections.Generic;
 
 namespace ImageProcessorService
 {
@@ -19,12 +20,16 @@ namespace ImageProcessorService
         const string imageBlobName = "images-v3";
         const double Threshold = 0.15; // 15%
         const int HighResolutionMaxSize = 10000;
-        const string logFilePath = @"C:\Development\Utils\ImageMetadataUpdater\log.txt";
-
         static StreamWriter logWriter;
 
         static async Task<int> Main(string[] args)
         {
+            string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
+            string logFolderName = "Log_" + DateTime.Now.ToString("yyyyMMddHHmmss");
+            string logFolderPath = Path.Combine(baseDirectory, logFolderName);
+            Directory.CreateDirectory(logFolderPath);
+            string logFilePath = Path.Combine(logFolderPath, "log.txt");
+
             using (logWriter = new StreamWriter(logFilePath, append: true) { AutoFlush = true })
             {
                 try

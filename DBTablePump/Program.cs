@@ -11,7 +11,7 @@ namespace DataTransferService
             string sourceConnectionString = "Data Source=lsr.database.windows.net;Initial Catalog=LSR;Persist Security Info=True;Integrated Security=false;User ID=gateway@lsr;Password=Aiwfcim2ft;MultipleActiveResultSets=True";
             //string destinationConnectionString = "Data Source=lsr.database.windows.net;Initial Catalog=LSRDevelopment;Persist Security Info=True;Integrated Security=false;User ID=web_app_login@lsr;Password=IUOPYjhf(*2390FOIJHjndjSsuwqp!!oI{MNS7yds7;MultipleActiveResultSets=True";
             string destinationConnectionString = "Data Source=thinker;Initial Catalog=LSRProd;Persist Security Info=True;Integrated Security=false;User ID=hiloUser;Password=Hawaii;MultipleActiveResultSets=True";
-            string tableName = "tblImagesIntegrityIgnored";
+            string tableName = "tblNavigationLogs";
 
             try
             {
