@@ -47,12 +47,19 @@ namespace ImageProcessorService
             using (IDbConnection db = new SqlConnection(dbConnectionString))
             {
                 Log("Fetching ImageIDs to process...");
+                //var imageIds = await db.QueryAsync<int>(
+                //    @"SELECT i.ImageID
+                //      FROM tblImages i
+                //      LEFT JOIN tblImageOnBlob b ON i.ImageID = b.ImageID
+                //      WHERE i.Deleted <> 1 AND b.ImageID IS NULL");
+
                 var imageIds = await db.QueryAsync<int>(
                     @"SELECT i.ImageID
-                      FROM tblImages i
-                      LEFT JOIN tblImageOnBlob b ON i.ImageID = b.ImageID
-                      WHERE i.Deleted <> 1 AND b.ImageID IS NULL");
-
+                        FROM tblImages i
+                        JOIN tblImageOnBlob b ON i.ImageID = b.ImageID
+                        WHERE i.Deleted <> 1
+                          AND b.[Exists] = 0
+                          AND i.filetype LIKE '%pdf%'");
                 Log($"Found {imageIds.Count()} images to process.");
 
                 foreach (var imageId in imageIds)
@@ -64,7 +71,15 @@ namespace ImageProcessorService
                         bool exists = await blobClientFull.ExistsAsync();
 
                         await db.ExecuteAsync(
-                            @"INSERT INTO tblImageOnBlob (ImageID, [Exists]) VALUES (@ImageID, @Exists)",
+                            //@"INSERT INTO tblImageOnBlob (ImageID, [Exists]) VALUES (@ImageID, @Exists)",
+
+                            @"MERGE INTO tblImageOnBlob AS target
+                                USING (VALUES (@ImageID, @Exists)) AS source (ImageID, [Exists])
+                                ON target.ImageID = source.ImageID
+                                WHEN MATCHED THEN
+                                    UPDATE SET [Exists] = source.[Exists]
+                                WHEN NOT MATCHED THEN
+                                    INSERT (ImageID, [Exists]) VALUES (source.ImageID, source.[Exists]);",
                             new
                             {
                                 ImageID = imageId,
