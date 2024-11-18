@@ -49,16 +49,7 @@ namespace ImageProcessorService
                 Log("Fetching Source and Target ImageIDs to process...");
 
                 var imagePairs = await db.QueryAsync<(int Target, int Source)>(
-                    @"SELECT 
-                        I.imageID AS Target,
-                        SO.ImageID AS Source
-                      FROM tblImages I
-                      JOIN tblImageOnBlob MI ON MI.ImageID = I.ImageID
-                      JOIN tblLSR874_PotentialImageSources SO ON SO.originalFilename = I.originalFilename
-                      WHERE MI.[Exists] = 0
-                        AND I.Deleted <> 1
-                        AND I.companyID = 51
-                      ORDER BY I.imageID DESC"
+                    @"SELECT * FROM tblLSR886Fixer"
                 );
 
                 Log($"Found {imagePairs.Count()} image pairs to process.");
@@ -82,8 +73,18 @@ namespace ImageProcessorService
                             BlobClient sourceBlobClient = blobContainerClient.GetBlobClient(sourceBlobName);
                             BlobClient targetBlobClient = blobContainerClient.GetBlobClient(targetBlobName);
 
+                            // Check if the target blob already exists
+                            bool targetBlobExists = await targetBlobClient.ExistsAsync();
+
+                            if (targetBlobExists)
+                            {
+                                Log($"Target blob {targetBlobName} already exists. Skipping copy.");
+                                continue; // Skip to the next blob
+                            }
+
                             try
                             {
+                                // Start the copy operation
                                 await targetBlobClient.StartCopyFromUriAsync(sourceBlobClient.Uri);
 
                                 BlobProperties properties = await targetBlobClient.GetPropertiesAsync();
