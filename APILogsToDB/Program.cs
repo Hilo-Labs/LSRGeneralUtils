@@ -9,7 +9,7 @@ class Program
 
     static void Main()
     {
-        string logFilePath = @"C:\Development\Utils\APILogsToDB\Logs\log-2024-11-21.txt";
+        string logFilePath = @"C:\Development\Utils\APILogsToDB\Logs\log-2024-11-22.txt";
         string tableName = "LogEntries";
 
         using (var connection = new SqlConnection(connectionString))
@@ -21,6 +21,7 @@ class Program
             foreach (var line in lines)
             {
                 if (string.IsNullOrWhiteSpace(line)) continue;
+                if (!line.StartsWith("[")) continue;
 
                 try
                 {
@@ -65,46 +66,59 @@ class Program
             var timestampWithLevel = line.Substring(1, timestampEnd - 1);
             var timestampParts = timestampWithLevel.Split(' ');
             var timestampString = timestampParts[0] + " " + timestampParts[1];
-            var logLevel = timestampParts[2]; // Extract log level (e.g., INF)
+            var logLevel = timestampParts[2]; 
 
             var utcDateTime = DateTime.ParseExact(timestampString, "yyyy-MM-dd HH:mm:ss", CultureInfo.InvariantCulture);
             entry.DateTime = TimeZoneInfo.ConvertTimeFromUtc(utcDateTime, TimeZoneInfo.FindSystemTimeZoneById("Eastern Standard Time"));
 
             var actionStart = timestampEnd + 2;
             var actionEnd = line.IndexOf(":", actionStart);
-            var actionText = line.Substring(actionStart, actionEnd - actionStart).Trim();
-            entry.Action = $"{logLevel} {actionText}";
+
+            string actionText;
+            if (actionEnd > 0) // Check if ':' exists in the line
+            {
+                actionText = line.Substring(actionStart, actionEnd - actionStart).Trim();
+            }
+            else
+            {
+                actionText = line.Substring(actionStart).Trim();
+            }
+            entry.Action = $"{logLevel}: {actionText}";
 
             // Extract parameter, URL, IP, and duration
             var remainingLine = line.Substring(actionEnd + 1).Trim();
+            var parameterEnd = remainingLine.IndexOf("\"");
+            entry.Parameter = parameterEnd > 0 ? remainingLine.Substring(0, parameterEnd).Trim() : null;
 
             if (remainingLine.Contains("\""))
             {
                 var urlStart = remainingLine.IndexOf("\"") + 1;
                 var urlEnd = remainingLine.IndexOf("\"", urlStart);
-                entry.URL = remainingLine.Substring(urlStart, urlEnd - urlStart);
+                entry.URL = urlEnd > urlStart ? remainingLine.Substring(urlStart, urlEnd - urlStart) : null;
 
-                remainingLine = remainingLine.Substring(urlEnd + 1).Trim();
+                remainingLine = remainingLine.Substring(urlEnd + 1);
             }
 
             if (remainingLine.Contains(" from "))
             {
                 var ipStart = remainingLine.IndexOf(" from ") + 6;
                 var ipEnd = remainingLine.IndexOf(" ", ipStart);
-                entry.IP = ipEnd > 0 ? remainingLine.Substring(ipStart, ipEnd - ipStart) : remainingLine.Substring(ipStart);
+                entry.IP = ipEnd > ipStart ? remainingLine.Substring(ipStart, ipEnd - ipStart) : remainingLine.Substring(ipStart);
             }
 
             if (remainingLine.Contains("Duration:"))
             {
                 var durationStart = remainingLine.IndexOf("Duration:") + 9;
                 var durationEnd = remainingLine.IndexOf(" ms", durationStart);
-                entry.Duration = double.Parse(remainingLine.Substring(durationStart, durationEnd - durationStart), CultureInfo.InvariantCulture);
+                if (durationEnd > durationStart)
+                {
+                    entry.Duration = double.Parse(remainingLine.Substring(durationStart, durationEnd - durationStart), CultureInfo.InvariantCulture);
+                }
             }
-
-            entry.Parameter = remainingLine.Contains(" ") ? remainingLine.Split(" ")[0] : null;
         }
-        catch (Exception)
+        catch (Exception e)
         {
+            Console.WriteLine(e.Message);
             return null;
         }
 
