@@ -16,9 +16,9 @@ CREATE TABLE tblInvalidImages (
     {
         static async Task<int> Main()
         {
-            string excelFilePath = @"C:\Development\Utils\ExcelImageIDToDB\SystemInvalidRecords 2024-11-07.xlsx"; 
+            string excelFilePath = @"C:\Development\Utils\ExcelImageIDToDB\Invalid Records 20241115.xlsx"; 
             string dbConnectionString = "Data Source=lsr.database.windows.net;Initial Catalog=LSR;Persist Security Info=True;Integrated Security=false;User ID=gateway@lsr;Password=Aiwfcim2ft;MultipleActiveResultSets=True";
-            int chunkSize = 1000; // Number of IDs per batch
+            int chunkSize = 1000; 
 
             string tableName = "tblInvalidImages";
 
