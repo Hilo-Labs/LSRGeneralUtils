@@ -31,6 +31,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GenerateCompanyCSVs", "Gene
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GenerateCompanySQLs", "GenerateCompanySQLs\GenerateCompanySQLs.csproj", "{DC7D4DD2-EF2D-44FE-B233-61363CEC5854}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CopyRenewalDateCompanies", "CopyRenewalDateCompanies\CopyRenewalDateCompanies.csproj", "{9568B136-4969-464C-AF59-D50894226A31}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExcelCompanyReversal", "ExcelCompanyReversal\ExcelCompanyReversal.csproj", "{8FBD3A7A-FF18-4782-9ADA-5CF853C9CA9E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -93,6 +97,14 @@ Global
 		{DC7D4DD2-EF2D-44FE-B233-61363CEC5854}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DC7D4DD2-EF2D-44FE-B233-61363CEC5854}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DC7D4DD2-EF2D-44FE-B233-61363CEC5854}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9568B136-4969-464C-AF59-D50894226A31}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9568B136-4969-464C-AF59-D50894226A31}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9568B136-4969-464C-AF59-D50894226A31}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9568B136-4969-464C-AF59-D50894226A31}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8FBD3A7A-FF18-4782-9ADA-5CF853C9CA9E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8FBD3A7A-FF18-4782-9ADA-5CF853C9CA9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8FBD3A7A-FF18-4782-9ADA-5CF853C9CA9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8FBD3A7A-FF18-4782-9ADA-5CF853C9CA9E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
