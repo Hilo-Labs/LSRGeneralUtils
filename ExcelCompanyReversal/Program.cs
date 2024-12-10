@@ -24,20 +24,19 @@ namespace ExcelCompanyReversal
         {
             ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
 
-            //var updateResult = await UpdateCompaniesAsync();
-            //if (updateResult != 0)
-            //{
-            //    Console.WriteLine("Updates encountered an error.");
-            //    return updateResult;
-            //}
-
-            // Call the verify function
-            var verifyResult = await VerifyUpdatesAsync();
-            if (verifyResult != 0)
+            var updateResult = await UpdateCompaniesAsync();
+            if (updateResult != 0)
             {
-                Console.WriteLine("Verification encountered an error.");
-                return verifyResult;
+                Console.WriteLine("Updates encountered an error.");
+                return updateResult;
             }
+
+            //var verifyResult = await VerifyUpdatesAsync();
+            //if (verifyResult != 0)
+            //{
+            //    Console.WriteLine("Verification encountered an error.");
+            //    return verifyResult;
+            //}
 
             Console.WriteLine("All processes completed successfully.");
             return 0;
@@ -66,19 +65,35 @@ namespace ExcelCompanyReversal
                                 continue;
                             }
 
-                            if (currentCompanyId.Value != record.FromCompanyId)
+                            //if (currentCompanyId.Value != record.FromCompanyId)
+                            //{
+                            //    Console.WriteLine($"ImageID {record.ImageID} skipped because current CompanyID ({currentCompanyId.Value}) does not match from_company_id ({record.FromCompanyId}).");
+                            //    await logWriter.WriteLineAsync($"{record.ImageID}, current={currentCompanyId.Value}, expected={record.FromCompanyId}");
+                            //    continue;
+                            //}
+
+                            //var rowsAffected = await db.ExecuteAsync(
+                            //    $"UPDATE {tableName} SET CompanyID = @ToCompanyId WHERE ImageID = @ImageID",
+                            //    new { ImageID = record.ImageID, ToCompanyId = record.ToCompanyId }
+                            //);
+
+                            //Console.WriteLine($"ImageID {record.ImageID} updated. Rows affected: {rowsAffected}");
+
+                            if (currentCompanyId.Value != record.ToCompanyId)
                             {
-                                Console.WriteLine($"ImageID {record.ImageID} skipped because current CompanyID ({currentCompanyId.Value}) does not match from_company_id ({record.FromCompanyId}).");
-                                await logWriter.WriteLineAsync($"{record.ImageID}, current={currentCompanyId.Value}, expected={record.FromCompanyId}");
+                                Console.WriteLine($"ImageID {record.ImageID} skipped because current CompanyID ({currentCompanyId.Value}) does not match to_company_id ({record.ToCompanyId}).");
+                                await logWriter.WriteLineAsync($"{record.ImageID}, current={currentCompanyId.Value}, expected={record.ToCompanyId}");
                                 continue;
                             }
 
+                            var newField2Value = $"CompanyId Reversal - Phase II - moved from companyId {record.FromCompanyId} to companyId {record.ToCompanyId}";
                             var rowsAffected = await db.ExecuteAsync(
-                                $"UPDATE {tableName} SET CompanyID = @ToCompanyId WHERE ImageID = @ImageID",
-                                new { ImageID = record.ImageID, ToCompanyId = record.ToCompanyId }
+                                $"UPDATE {tableName} SET Field2 = @Value WHERE ImageID = @ImageID",
+                                new { ImageID = record.ImageID, Value = newField2Value }
                             );
 
-                            Console.WriteLine($"ImageID {record.ImageID} updated. Rows affected: {rowsAffected}");
+                            Console.WriteLine($"ImageID {record.ImageID} Field2 updated. Rows affected: {rowsAffected}");
+
                         }
                     }
                 }
