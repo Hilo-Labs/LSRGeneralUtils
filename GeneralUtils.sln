@@ -39,6 +39,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RotationVerification", "Rot
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlobDownloader", "BlobDownloader\BlobDownloader.csproj", "{1572CF48-CA3F-4D11-AF5A-F7EC8B59A095}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OverrideHighWithMedium", "OverrideHighWithMedium\OverrideHighWithMedium.csproj", "{3E7C2F83-099D-4F85-867C-6F7801D744E4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ImageProcessingRequest", "ImageProcessingRequest\ImageProcessingRequest.csproj", "{6461C180-A66D-471B-9ECE-8920C39603F6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -117,6 +121,14 @@ Global
 		{1572CF48-CA3F-4D11-AF5A-F7EC8B59A095}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1572CF48-CA3F-4D11-AF5A-F7EC8B59A095}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1572CF48-CA3F-4D11-AF5A-F7EC8B59A095}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3E7C2F83-099D-4F85-867C-6F7801D744E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E7C2F83-099D-4F85-867C-6F7801D744E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3E7C2F83-099D-4F85-867C-6F7801D744E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3E7C2F83-099D-4F85-867C-6F7801D744E4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6461C180-A66D-471B-9ECE-8920C39603F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6461C180-A66D-471B-9ECE-8920C39603F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6461C180-A66D-471B-9ECE-8920C39603F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6461C180-A66D-471B-9ECE-8920C39603F6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

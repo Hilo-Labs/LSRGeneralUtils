@@ -28,19 +28,19 @@ class Program
         {
             connection.Open();
 
-            var deleteQuery = $"DELETE FROM {tableName}";
-            using (var deleteCommand = new SqlCommand(deleteQuery, connection))
-            {
-                try
-                {
-                    deleteCommand.ExecuteNonQuery();
-                    Console.WriteLine("Table cleared before inserting new data.");
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine($"Error deleting data from table: {ex.Message}");
-                }
-            }
+            //var deleteQuery = $"DELETE FROM {tableName}";
+            //using (var deleteCommand = new SqlCommand(deleteQuery, connection))
+            //{
+            //    try
+            //    {
+            //        deleteCommand.ExecuteNonQuery();
+            //        Console.WriteLine("Table cleared before inserting new data.");
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //        Console.WriteLine($"Error deleting data from table: {ex.Message}");
+            //    }
+            //}
 
             foreach (var group in groupedFiles)
             {
