@@ -88,7 +88,6 @@ namespace ImageRegionDrawer
                 return;
             }
 
-            //var tifFiles = Directory.GetFiles(inputDirectory, "full_3327453.tif", SearchOption.TopDirectoryOnly);
             var tifFiles = Directory.GetFiles(inputDirectory, "*.tif", SearchOption.TopDirectoryOnly);
 
             if (!tifFiles.Any())
@@ -136,17 +135,38 @@ namespace ImageRegionDrawer
                             var linearScale = maxDim < 10000;
                             double mediumScaleFactor = linearScale ? maxDim / 2000 : 5;
 
-                            var color = maxDim < 10000 ? MagickColor.FromRgb(0,255,0) : MagickColor.FromRgb(0, 0, 255);
-
                             var regions = new List<string> { record.Region1, record.Region2, record.Region3 };
-                            
-                            string justfileName = Path.GetFileNameWithoutExtension(tifFile);
+                            var regionRectangles = regions
+                                .Select(r => RegionRectangle.CreateOrNull(r))
+                                .Where(rr => rr != null)
+                                .ToList();
 
-                            int xShift = 0;
-                            int yShift = 0;
+                            var (maxX1, maxY1) = GetMaxCoordinates(regionRectangles, 1.0);
+                            var (maxXMed, maxYMed) = GetMaxCoordinates(regionRectangles, mediumScaleFactor);
 
-                            DrawScenario(image, regions, 1, Path.Combine(outputDirectory, $"{justfileName}.NoScale.tif"), MagickColor.FromRgb(255, 0, 0), xShift, yShift);
-                            DrawScenario(image, regions, mediumScaleFactor, Path.Combine(outputDirectory, $"{justfileName}.Medium.tif"), color, xShift, yShift);
+                            bool mediumOutOfBounds = maxXMed > fullWidth || maxYMed > fullHeight;
+
+                            bool scale1TooSmall = (maxX1 < (fullWidth * 0.5) && maxY1 < (fullHeight * 0.5));
+
+                            double chosenScale;
+                            MagickColor color;
+                            if (!mediumOutOfBounds && scale1TooSmall)
+                            {
+                                chosenScale = mediumScaleFactor;
+                                color = maxDim < 10000 ? MagickColor.FromRgb(0, 255, 0) : MagickColor.FromRgb(0, 0, 255);
+                            }
+                            else
+                            {
+                                chosenScale = 1.0;
+                                color = MagickColor.FromRgb(255, 0, 0);
+                            }
+
+                            var justfileName = Path.GetFileNameWithoutExtension(tifFile);
+
+                            DrawScenario(image, regionRectangles, chosenScale, 
+                                         Path.Combine(outputDirectory, $"{justfileName}.SelectedScale.tif"), 
+                                         color);
+
                         }
                     }
                     catch (Exception ex)
@@ -159,34 +179,44 @@ namespace ImageRegionDrawer
             Console.WriteLine("Processing completed.");
         }
 
-        private static void DrawScenario(MagickImage sourceImage, IEnumerable<string> regions, double scaleFactor, string outputFilePath, MagickColor color, double xShift, double yShift)
+        private static (double maxX, double maxY) GetMaxCoordinates(IEnumerable<RegionRectangle> rectangles, double scale)
+        {
+            double maxX = 0, maxY = 0;
+            foreach (var rr in rectangles)
+            {
+                double scaledX = rr.X * scale + rr.Width * scale;
+                double scaledY = rr.Y * scale + rr.Height * scale;
+                if (scaledX > maxX) maxX = scaledX;
+                if (scaledY > maxY) maxY = scaledY;
+            }
+
+            return (maxX, maxY);
+        }
+
+        private static void DrawScenario(MagickImage sourceImage, IEnumerable<RegionRectangle> rectangles, double scaleFactor, string outputFilePath, MagickColor color)
         {
             using (var scenarioImage = sourceImage.Clone() as MagickImage)
             {
                 bool drewAnyRegion = false;
-                foreach (var regionStr in regions)
+                foreach (var regionRect in rectangles)
                 {
-                    var regionRect = RegionRectangle.CreateOrNull(regionStr);
-                    if (regionRect != null)
-                    {
-                        double scaledX = (regionRect.X * scaleFactor) + xShift;
-                        double scaledY = (regionRect.Y * scaleFactor) + yShift;
-                        double scaledWidth = regionRect.Width * scaleFactor;
-                        double scaledHeight = regionRect.Height * scaleFactor;
+                    double scaledX = regionRect.X * scaleFactor;
+                    double scaledY = regionRect.Y * scaleFactor;
+                    double scaledWidth = regionRect.Width * scaleFactor;
+                    double scaledHeight = regionRect.Height * scaleFactor;
 
-                        DrawRectangle(scenarioImage, scaledX, scaledY, scaledWidth, scaledHeight, color);
-                        drewAnyRegion = true;
-                    }
+                    DrawRectangle(scenarioImage, scaledX, scaledY, scaledWidth, scaledHeight, color);
+                    drewAnyRegion = true;
                 }
 
+                scenarioImage.Scale(2000, 2000);
                 scenarioImage.Write(outputFilePath);
-                Console.WriteLine($"Saved processed image to {outputFilePath} (Drew regions: {drewAnyRegion}, ScaleFactor: {scaleFactor}, xShift: {xShift}, yShift: {yShift})");
+                Console.WriteLine($"Saved processed image to {outputFilePath} (Drew regions: {drewAnyRegion}, ScaleFactor: {scaleFactor})");
             }
         }
 
         private static void DrawRectangle(MagickImage image, double x, double y, double width, double height, MagickColor color)
         {
-            // Calculate end coordinates
             double endX = x + width;
             double endY = y + height;
 
@@ -202,20 +232,15 @@ namespace ImageRegionDrawer
             double clampedWidth = endX - x;
             double clampedHeight = endY - y;
 
-            // Only draw if there is a positive width and height
             if (clampedWidth > 0 && clampedHeight > 0)
             {
                 var drawables = new Drawables()
                     .StrokeColor(color)
-                    .StrokeWidth(3)
+                    .StrokeWidth(10)
                     .FillColor(new MagickColor("transparent"))
                     .Rectangle(x, y, x + clampedWidth, y + clampedHeight);
 
                 drawables.Draw(image);
-            }
-            else
-            {
-                // The rectangle does not fit in the image boundaries in a meaningful way, skip drawing.
             }
         }
     }
