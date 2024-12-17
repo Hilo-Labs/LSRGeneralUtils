@@ -134,79 +134,19 @@ namespace ImageRegionDrawer
                             double maxDim = Math.Max(fullWidth, fullHeight);
 
                             var linearScale = maxDim < 10000;
-                            double mediumScaleFactor = linearScale ? (maxDim / 2000.0) : 5.0;
+                            double mediumScaleFactor = linearScale ? maxDim / 2000 : 5;
 
-                            var regions = new List<RegionRectangle>();
-                            foreach (var rStr in new[] { record.Region1, record.Region2, record.Region3 })
-                            {
-                                var rr = RegionRectangle.CreateOrNull(rStr);
-                                if (rr != null) regions.Add(rr);
-                            }
-                            if (regions.Count == 0)
-                            {
-                                image.Write(Path.Combine(outputDirectory, sourceFileName));
-                                Console.WriteLine("No valid regions. Saved original image.");
-                                continue;
-                            }
+                            var color = maxDim < 10000 ? MagickColor.FromRgb(0,255,0) : MagickColor.FromRgb(0, 0, 255);
 
-                            double finalScale = 1.0;
-                            if (mediumScaleFactor > 1.0)
-                            {
-                                var (outOfBounds1, bbox1) = CheckRectangles(regions, fullWidth, fullHeight, 1.0, 0, 0);
-                                var (outOfBoundsMedium, bboxMedium) = CheckRectangles(regions, fullWidth, fullHeight, mediumScaleFactor, 0, 0);
+                            var regions = new List<string> { record.Region1, record.Region2, record.Region3 };
+                            
+                            string justfileName = Path.GetFileNameWithoutExtension(tifFile);
 
-                                if (!outOfBoundsMedium)
-                                {
-                                    double smallThreshold = 0.1;
-                                    bool isSmallAt1 = (bbox1.Width < fullWidth * smallThreshold) && (bbox1.Height < fullHeight * smallThreshold);
-                            //DrawScenario(image, regions, 2.15, Path.Combine(outputDirectory, $"{justfileName}.Medium.tif"), color, xShift, yShift);
-                                    double betterThreshold = 0.2;
-                                    bool isBetterAtMedium = (bboxMedium.Width >= fullWidth * betterThreshold) || (bboxMedium.Height >= fullHeight * betterThreshold);
-                                    if (isSmallAt1 && isBetterAtMedium)
-                                    {
-                                        finalScale = mediumScaleFactor;
-                                    }
-                                    else
-                                    {
-                                        finalScale = 1.0;
-                                    }
-                                }
-                                else
-                                {
-                                    finalScale = 1.0;
-                                }
-                            }
-                            else
-                            {
-                                finalScale = 1.0;
-                            }
+                            int xShift = 0;
+                            int yShift = 0;
 
-                            //DrawScenario(image, regions, 5, Path.Combine(outputDirectory, $"{justfileName}.Medium.tif"), color, xShift, yShift);
-                            var (finalOutOfBounds, finalBbox) = CheckRectangles(regions, fullWidth, fullHeight, finalScale, 0, 0);
-                            if (finalOutOfBounds)
-                            {
-                                finalScale = 1.0;
-                            }
-
-                            using (var scenarioImage = image.Clone() as MagickImage)
-                            {
-                                bool drewAnyRegion = false;
-                                foreach (var rr in regions)
-                                {
-                                    double scaledX = rr.X * finalScale;
-                                    double scaledY = rr.Y * finalScale;
-                                    double scaledWidth = rr.Width * finalScale;
-                                    double scaledHeight = rr.Height * finalScale;
-
-                                    // At this point we assume no out-of-bound because we checked previously.
-                                    DrawRectangleNoCheck(scenarioImage, scaledX, scaledY, scaledWidth, scaledHeight, MagickColors.Red);
-                                    drewAnyRegion = true;
-                                }
-
-                                string outputFilePath = Path.Combine(outputDirectory, sourceFileName);
-                                scenarioImage.Write(outputFilePath);
-                                Console.WriteLine($"Saved processed image to {outputFilePath} (Drew regions: {drewAnyRegion}, ScaleFactor: {finalScale})");
-                            }
+                            DrawScenario(image, regions, 1, Path.Combine(outputDirectory, $"{justfileName}.NoScale.tif"), MagickColor.FromRgb(255, 0, 0), xShift, yShift);
+                            DrawScenario(image, regions, mediumScaleFactor, Path.Combine(outputDirectory, $"{justfileName}.Medium.tif"), color, xShift, yShift);
                         }
                     }
                     catch (Exception ex)
@@ -219,62 +159,64 @@ namespace ImageRegionDrawer
             Console.WriteLine("Processing completed.");
         }
 
-        private static (bool outOfBounds, (double X, double Y, double Width, double Height)) CheckRectangles(
-            List<RegionRectangle> regions,
-            double imgWidth,
-            double imgHeight,
-            double scaleFactor,
-            double xShift,
-            double yShift)
+        private static void DrawScenario(MagickImage sourceImage, IEnumerable<string> regions, double scaleFactor, string outputFilePath, MagickColor color, double xShift, double yShift)
         {
-            double minX = double.MaxValue;
-            double minY = double.MaxValue;
-            double maxX = double.MinValue;
-            double maxY = double.MinValue;
-
-            bool outOfBounds = false;
-
-            foreach (var rr in regions)
+            using (var scenarioImage = sourceImage.Clone() as MagickImage)
             {
-                double scaledX = (rr.X * scaleFactor) + xShift;
-                double scaledY = (rr.Y * scaleFactor) + yShift;
-                double scaledW = rr.Width * scaleFactor;
-                double scaledH = rr.Height * scaleFactor;
-
-                double endX = scaledX + scaledW;
-                double endY = scaledY + scaledH;
-
-                if (scaledX < 0 || scaledY < 0 || endX > imgWidth || endY > imgHeight)
+                bool drewAnyRegion = false;
+                foreach (var regionStr in regions)
                 {
-                    outOfBounds = true;
+                    var regionRect = RegionRectangle.CreateOrNull(regionStr);
+                    if (regionRect != null)
+                    {
+                        double scaledX = (regionRect.X * scaleFactor) + xShift;
+                        double scaledY = (regionRect.Y * scaleFactor) + yShift;
+                        double scaledWidth = regionRect.Width * scaleFactor;
+                        double scaledHeight = regionRect.Height * scaleFactor;
+
+                        DrawRectangle(scenarioImage, scaledX, scaledY, scaledWidth, scaledHeight, color);
+                        drewAnyRegion = true;
+                    }
                 }
 
-                if (scaledX < minX) minX = scaledX;
-                if (scaledY < minY) minY = scaledY;
-                if (endX > maxX) maxX = endX;
-                if (endY > maxY) maxY = endY;
+                scenarioImage.Write(outputFilePath);
+                Console.WriteLine($"Saved processed image to {outputFilePath} (Drew regions: {drewAnyRegion}, ScaleFactor: {scaleFactor}, xShift: {xShift}, yShift: {yShift})");
             }
-
-            if (minX == double.MaxValue || minY == double.MaxValue || maxX == double.MinValue || maxY == double.MinValue)
-            {
-                return (false, (0, 0, 0, 0));
-            }
-
-            double bboxWidth = maxX - minX;
-            double bboxHeight = maxY - minY;
-
-            return (outOfBounds, (X: minX, Y: minY, Width: bboxWidth, Height: bboxHeight));
         }
 
-        private static void DrawRectangleNoCheck(MagickImage image, double x, double y, double width, double height, MagickColor color)
+        private static void DrawRectangle(MagickImage image, double x, double y, double width, double height, MagickColor color)
         {
-            var drawables = new Drawables()
-                .StrokeColor(color)
-                .StrokeWidth(3)
-                .FillColor(new MagickColor("transparent"))
-                .Rectangle(x, y, x + width, y + height);
+            // Calculate end coordinates
+            double endX = x + width;
+            double endY = y + height;
 
-            drawables.Draw(image);
+            // Clamp start coordinates
+            if (x < 0) x = 0;
+            if (y < 0) y = 0;
+
+            // Clamp end coordinates to the image boundaries
+            if (endX > image.Width - 1) endX = image.Width - 1;
+            if (endY > image.Height - 1) endY = image.Height - 1;
+
+            // Recalculate width and height after clamping
+            double clampedWidth = endX - x;
+            double clampedHeight = endY - y;
+
+            // Only draw if there is a positive width and height
+            if (clampedWidth > 0 && clampedHeight > 0)
+            {
+                var drawables = new Drawables()
+                    .StrokeColor(color)
+                    .StrokeWidth(3)
+                    .FillColor(new MagickColor("transparent"))
+                    .Rectangle(x, y, x + clampedWidth, y + clampedHeight);
+
+                drawables.Draw(image);
+            }
+            else
+            {
+                // The rectangle does not fit in the image boundaries in a meaningful way, skip drawing.
+            }
         }
     }
 }
